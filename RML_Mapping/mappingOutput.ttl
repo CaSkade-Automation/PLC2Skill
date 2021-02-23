@@ -1,0 +1,4 @@
+@prefix cap: <http://www.hsu-ifa.de/ontologies/capability-model#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://hsu-ifa.de/plc-skill/calcFB> a cap:OpcUaVariableSkill .
