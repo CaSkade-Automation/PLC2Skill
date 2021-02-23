@@ -1,0 +1,11 @@
+prefixes:
+  ex: http://www.example.com/
+ 
+
+mappings:
+  configuration:
+    sources:
+      -[TestImplementierung261220.xml~xpath, /project/instances/configurations/configuration]
+    s: ex:$(@name)
+    po:
+      - [a, ex:Configuration]
