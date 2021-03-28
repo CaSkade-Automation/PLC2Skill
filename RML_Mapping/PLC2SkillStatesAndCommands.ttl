@@ -1,0 +1,110 @@
+@prefix DINEN61360: <http://www.hsu-ifa.de/ontologies/DINEN61360#> .
+@prefix OPCUA: <http://www.hsu-ifa.de/ontologies/OpcUa#> .
+
+#PLC2SkillStates
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Idle> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "1" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Starting> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "2" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Execute> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "3" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Completing> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "4" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Complete> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "5" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Resetting> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "6" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Holding> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "7" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Held> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "8" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Unholding> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "9" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Suspending> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "10" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Suspended> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "11" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Unsuspending> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "12" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Stopping> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "13" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Stopped> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "14" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Aborting> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "15" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Aborted> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "16" .
+<http://hsu-ifa.de/PLC2Skill/PLC_CurrentState_Clearing> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Assurance";
+DINEN61360:Value "17" .
+
+#PLC2SkillCommands
+<http://hsu-ifa.de/PLC2Skill/StartCommand> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Requirement";
+DINEN61360:Value "1" .
+<http://hsu-ifa.de/PLC2Skill/ResetCommand> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Requirement";
+DINEN61360:Value "2" .
+<http://hsu-ifa.de/PLC2Skill/HoldCommand> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Requirement";
+DINEN61360:Value "3" .
+<http://hsu-ifa.de/PLC2Skill/UnholdCommand> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Requirement";
+DINEN61360:Value "4" .
+<http://hsu-ifa.de/PLC2Skill/SuspendCommand> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Requirement";
+DINEN61360:Value "5" .
+<http://hsu-ifa.de/PLC2Skill/UnsuspendCommand> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Requirement";
+DINEN61360:Value "6" .
+<http://hsu-ifa.de/PLC2Skill/ClearCommand> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Requirement";
+DINEN61360:Value "7" .
+<http://hsu-ifa.de/PLC2Skill/StopCommand> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Requirement";
+DINEN61360:Value "8" .
+<http://hsu-ifa.de/PLC2Skill/AbortCommand> a DINEN61360:Instance_Description;
+DINEN61360:Logic_Interpreation "=";
+DINEN61360:Expression_Goal "Requirement";
+DINEN61360:Value "9" .
