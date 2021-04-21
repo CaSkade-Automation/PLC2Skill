@@ -43,17 +43,24 @@
         rr:template "http://hsu-ifa.de/PLC2Skill/{./ancestor::pou/addData/data/ObjectId}/skillFB#{@name}";
         rr:class cap:OpcUaVariableSkill;
     ];
+    
         rr:predicateObjectMap [
         rr:predicate cap:hasSkillParameter, OPCUA:UAVariable;
         rr:objectMap [
             rr:template "http://hsu-ifa.de/PLC2Skill/skillFB/{@name}/SkillParameter#{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/interface/inputVars/variable[./type/derived/@name='TJ.SkillParameter']/@name}";
             rr:class OPCUA:UAVariable; 
                 ]
+        ];
+        rr:predicateObjectMap [
+        rr:predicate cap:hasSkillOutput, OPCUA:UAVariable;
+        rr:objectMap [
+            rr:template "http://hsu-ifa.de/PLC2Skill/skillFB/{@name}/SkillParameter#{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/interface/outputVars/variable[./type/derived/@name='TJ.SkillParameter']/@name}";
+            rr:class OPCUA:UAVariable; 
+                ]
+        ].
         
-                
- ].
 
- # SkillParameter Definition
+ # SkillParameter Definition 
 :SkillParameters a rr:TriplesMap;
     rml:logicalSource[
         rml:source "TestImplementierung240321.xml";
@@ -62,7 +69,7 @@
             ];
     rr:subjectMap [
         rr:template "http://hsu-ifa.de/PLC2Skill/skillFB/{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]/@name}/SkillParameter#{@name}";
-        rr:class cap:hasSkillParameter, OPCUA:UAVariable;
+        rr:class cap:SkillParameter, OPCUA:UAVariable;
     ];
         rr:predicateObjectMap [
         rr:predicate OPCUA:nodeId;
@@ -71,13 +78,13 @@
             rr:datatype xsd:string; 
                 ]
         ];
-        # rr:predicateObjectMap [
-        # rr:predicate cap:value;
-        # rr:objectMap [
-        #     rr:template "{./initialValue/structValue/value[@member='value']/simpleValue/@value}";
-        #     rr:datatype xsd:string; 
-        #         ]
-        # ];
+        rr:predicateObjectMap [
+        rr:predicate cap:value;
+        rr:objectMap [
+            rr:template "{./initialValue/structValue/value[@member='value']/simpleValue/@value}";
+            rr:datatype xsd:string; 
+                ]
+             ];
         rr:predicateObjectMap [
         rr:predicate cap:hasDefaultValue; 
         rr:objectMap [
@@ -86,21 +93,75 @@
                 ]
         ];
         rr:predicateObjectMap [
-        rr:predicate cap:hasParameterName; #nicht in xml -> ST-Teil evtl. der PLC-Name nutzbar
+        rr:predicate cap:hasParameterName; 
         rr:objectMap [
             rr:template "{./initialValue/structValue/value[@member='name']/simpleValue/@value}";
             rr:datatype xsd:string; 
                 ]
         ];
         rr:predicateObjectMap [
-        rr:predicate cap:hasParameterType; #nicht in xml -> ST-Teil
+        rr:predicate cap:hasParameterType; 
         rr:objectMap [
             rr:template "{./initialValue/structValue/value[@member='paramType']/simpleValue/@value}";
             rr:datatype xsd:string; 
                 ]
         ];
         rr:predicateObjectMap [
-        rr:predicate cap:isRequired; #nicht in xml -> ST-Teil
+        rr:predicate cap:isRequired; 
+        rr:objectMap [
+            rr:template "{./initialValue/structValue/value[@member='required']/simpleValue/@value}";
+            rr:datatype xsd:boolean; 
+                ]
+        ].
+
+#Definition SkillOutput
+:SkillOutput a rr:TriplesMap;
+    rml:logicalSource[
+        rml:source "TestImplementierung240321.xml";
+        rml:referenceFormulation ql:XPath;
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/outputVars/variable[./type/derived/@name='TJ.SkillParameter']"
+            ];
+    rr:subjectMap [
+        rr:template "http://hsu-ifa.de/PLC2Skill/skillFB/{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]/@name}/SkillParameter#{@name}";
+        rr:class cap:SkillOutput, OPCUA:UAVariable;
+    ];
+        rr:predicateObjectMap [
+        rr:predicate OPCUA:nodeId;
+        rr:objectMap [
+            rr:template "ns=4;s=|var|CODESYS Control Win V3 x64.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}";
+            rr:datatype xsd:string; 
+                ]
+        ];
+        rr:predicateObjectMap [
+        rr:predicate cap:value;
+        rr:objectMap [
+            rr:template "{./initialValue/structValue/value[@member='value']/simpleValue/@value}";
+            rr:datatype xsd:string; 
+                ]
+             ];
+        rr:predicateObjectMap [
+        rr:predicate cap:hasDefaultValue; 
+        rr:objectMap [
+            rr:template "{./initialValue/structValue/value[@member='default']/simpleValue/@value}";
+            rr:datatype xsd:string; 
+                ]
+        ];
+        rr:predicateObjectMap [
+        rr:predicate cap:hasParameterName; 
+        rr:objectMap [
+            rr:template "{./initialValue/structValue/value[@member='name']/simpleValue/@value}";
+            rr:datatype xsd:string; 
+                ]
+        ];
+        rr:predicateObjectMap [
+        rr:predicate cap:hasParameterType; 
+        rr:objectMap [
+            rr:template "{./initialValue/structValue/value[@member='paramType']/simpleValue/@value}";
+            rr:datatype xsd:string; 
+                ]
+        ];
+        rr:predicateObjectMap [
+        rr:predicate cap:isRequired; 
         rr:objectMap [
             rr:template "{./initialValue/structValue/value[@member='required']/simpleValue/@value}";
             rr:datatype xsd:boolean; 
@@ -935,6 +996,14 @@
     rr:predicate OPCUA:containsNode;
     rr:objectMap [
 	rr:template "http://hsu-ifa.de/PLC2Skill/skillFB/{@name}/SkillParameter#{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/interface/inputVars/variable[./type/derived/@name='TJ.SkillParameter']/@name} ";
+	rr:class OPCUA:UAVariable
+]];
+
+#Node SkillOutput
+  	rr:predicateObjectMap [
+    rr:predicate OPCUA:containsNode;
+    rr:objectMap [
+	rr:template "http://hsu-ifa.de/PLC2Skill/skillFB/{@name}/SkillParameter#{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/interface/outputVars/variable[./type/derived/@name='TJ.SkillParameter']/@name} ";
 	rr:class OPCUA:UAVariable
 ]];
 #Node CurrentStateOutput
