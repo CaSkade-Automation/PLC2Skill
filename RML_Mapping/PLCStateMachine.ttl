@@ -1,0 +1,208 @@
+@prefix : <http://www.hsu-ifa.de/ontologies/DINEN61360#> .
+@prefix Cap: <http://www.hsu-ifa.de/ontologies/capability-model#> .
+@prefix DIN8580: <http://www.hsu-ifa.de/ontologies/DIN8580#> .
+@prefix OPS: <http://www.hsu-ifa.de/ontologies/OPS-KnowledgeBase#> .
+@prefix OpcUa: <http://www.hsu-ifa.de/ontologies/OpcUa#> .
+@prefix VDI2206: <http://www.hsu-ifa.de/ontologies/VDI2206#> .
+@prefix VDI3682: <http://www.hsu-ifa.de/ontologies/VDI3682#> .
+@prefix WADL1: <http://www.hsu-ifa.de/ontologies/WADL#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix gn: <http://www.geonames.org/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix untitled-ontology-39: <http://www.semanticweb.org/hildebrandt/ontologies/2017/11/untitled-ontology-39#> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ISA88: <http://www.hsu-ifa.de/ontologies/ISA-TR88#>.
+@prefix PLC2Skill: <http://www.hsu-ifa.de/PLC2Skill#>.
+
+PLC2Skill:_Replace_StateMachine a <http://www.hsu-ifa.de/ontologies/ISA-TR88#StateMachine> .
+
+PLC2Skill:_Replace_StateMachine_Aborting a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Aborting>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Aborting_State_Complete .
+
+PLC2Skill:_Replace_StateMachine_Clearing a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Clearing>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Clearing_State_Complete .
+
+PLC2Skill:_Replace_StateMachine_Complete a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Complete>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Reset_Command, PLC2Skill:_Replace_StateMachine_Stop_Command .
+
+PLC2Skill:_Replace_StateMachine_Completing a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Completing>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Completing_State_Complete, PLC2Skill:_Replace_StateMachine_Stop_Command .
+
+PLC2Skill:_Replace_StateMachine_Execute a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Execute>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Execute_State_Complete, PLC2Skill:_Replace_StateMachine_Hold_Command,
+    PLC2Skill:_Replace_StateMachine_Stop_Command, PLC2Skill:_Replace_StateMachine_Suspend_Command .
+
+PLC2Skill:_Replace_StateMachine_Holding a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Holding>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Holding_State_Complete, PLC2Skill:_Replace_StateMachine_Stop_Command .
+
+PLC2Skill:_Replace_StateMachine_Resetting a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Resetting>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Resetting_State_Complete, PLC2Skill:_Replace_StateMachine_Stop_Command .
+
+PLC2Skill:_Replace_StateMachine_Starting a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Starting>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Starting_State_Complete, PLC2Skill:_Replace_StateMachine_Stop_Command .
+
+PLC2Skill:_Replace_StateMachine_Stopping a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Stopping>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Stopping_State_Complete .
+
+PLC2Skill:_Replace_StateMachine_Suspending a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Suspending>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Stop_Command, PLC2Skill:_Replace_StateMachine_Suspending_State_Complete .
+
+PLC2Skill:_Replace_StateMachine_Unholding a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Unholding>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Stop_Command, PLC2Skill:_Replace_StateMachine_Unholding_State_Complete .
+
+PLC2Skill:_Replace_StateMachine_Unsuspending a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Unsuspending>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Stop_Command, PLC2Skill:_Replace_StateMachine_Unsuspending_State_Complete .
+
+PLC2Skill:_Replace_StateMachine_Aborted a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Aborted>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Clear_Command .
+
+PLC2Skill:_Replace_StateMachine_Held a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Held>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Stop_Command, PLC2Skill:_Replace_StateMachine_Un_Hold_Command .
+
+PLC2Skill:_Replace_StateMachine_Idle a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Idle>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Start_Command, PLC2Skill:_Replace_StateMachine_Stop_Command .
+
+PLC2Skill:_Replace_StateMachine_Stopped a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Stopped>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Reset_Command .
+
+PLC2Skill:_Replace_StateMachine_Suspended a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Suspended>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#State_is_connected_with_Transition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Stop_Command, PLC2Skill:_Replace_StateMachine_Unsuspend_Command .
+
+PLC2Skill:_Replace_StateMachine_Abort_Command a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Abort_Command>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Aborting .
+
+PLC2Skill:_Replace_StateMachine_Clear_Command a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Clear_Command>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Clearing .
+
+PLC2Skill:_Replace_StateMachine_Hold_Command a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Hold_Command>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Holding .
+
+PLC2Skill:_Replace_StateMachine_Reset_Command a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Reset_Command>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Resetting .
+
+PLC2Skill:_Replace_StateMachine_Start_Command a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Start_Command>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Starting .
+
+PLC2Skill:_Replace_StateMachine_Stop_Command a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Stop_Command>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Stopping .
+
+PLC2Skill:_Replace_StateMachine_Suspend_Command a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Suspend_Command>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Suspending .
+
+PLC2Skill:_Replace_StateMachine_Un_Hold_Command a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Un-Hold_Command>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Unholding .
+
+PLC2Skill:_Replace_StateMachine_Unsuspend_Command a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Unsuspend_Command>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Unsuspending .
+
+PLC2Skill:_Replace_StateMachine_Aborting_State_Complete a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Aborting_State_Complete>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Aborted .
+
+PLC2Skill:_Replace_StateMachine_Clearing_State_Complete a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Clearing_State_Complete>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Stopped .
+
+PLC2Skill:_Replace_StateMachine_Completing_State_Complete a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Completing_State_Complete>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Complete .
+
+PLC2Skill:_Replace_StateMachine_Execute_State_Complete a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Execute_State_Complete>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Completing .
+
+PLC2Skill:_Replace_StateMachine_Holding_State_Complete a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Holding_State_Complete>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Held .
+
+PLC2Skill:_Replace_StateMachine_Resetting_State_Complete a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Resetting_State_Complete>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Idle .
+
+PLC2Skill:_Replace_StateMachine_Starting_State_Complete a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Starting_State_Complete>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Execute .
+
+PLC2Skill:_Replace_StateMachine_Stopping_State_Complete a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Stopping_State_Complete>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Stopped .
+
+PLC2Skill:_Replace_StateMachine_Suspending_State_Complete a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Suspending_State_Complete>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Suspended .
+
+PLC2Skill:_Replace_StateMachine_Unholding_State_Complete a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Unholding_State_Complete>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Execute .
+
+PLC2Skill:_Replace_StateMachine_Unsuspending_State_Complete a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Unsuspending_State_Complete>,
+    owl:NamedIndividual;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#Transition_is_connected_with_State> PLC2Skill:_Replace_StateMachine_Execute .
+
+PLC2Skill:_Replace_StateMachine <http://www.hsu-ifa.de/ontologies/ISA-TR88#hasState>
+    PLC2Skill:_Replace_StateMachine_Aborted, PLC2Skill:_Replace_StateMachine_Aborting, PLC2Skill:_Replace_StateMachine_Clearing,
+    PLC2Skill:_Replace_StateMachine_Complete, PLC2Skill:_Replace_StateMachine_Completing,
+    PLC2Skill:_Replace_StateMachine_Execute, PLC2Skill:_Replace_StateMachine_Held, PLC2Skill:_Replace_StateMachine_Holding,
+    PLC2Skill:_Replace_StateMachine_Idle, PLC2Skill:_Replace_StateMachine_Resetting, PLC2Skill:_Replace_StateMachine_Starting,
+    PLC2Skill:_Replace_StateMachine_Stopped, PLC2Skill:_Replace_StateMachine_Stopping, PLC2Skill:_Replace_StateMachine_Suspended,
+    PLC2Skill:_Replace_StateMachine_Suspending, PLC2Skill:_Replace_StateMachine_Unholding,
+    PLC2Skill:_Replace_StateMachine_Unsuspending;
+  <http://www.hsu-ifa.de/ontologies/ISA-TR88#hasTransition> PLC2Skill:_Replace_StateMachine_Abort_Command,
+    PLC2Skill:_Replace_StateMachine_Aborting_State_Complete, PLC2Skill:_Replace_StateMachine_Clear_Command,
+    PLC2Skill:_Replace_StateMachine_Clearing_State_Complete, PLC2Skill:_Replace_StateMachine_Completing_State_Complete,
+    PLC2Skill:_Replace_StateMachine_Execute_State_Complete, PLC2Skill:_Replace_StateMachine_Hold_Command,
+    PLC2Skill:_Replace_StateMachine_Holding_State_Complete, PLC2Skill:_Replace_StateMachine_Reset_Command,
+    PLC2Skill:_Replace_StateMachine_Resetting_State_Complete, PLC2Skill:_Replace_StateMachine_Start_Command,
+    PLC2Skill:_Replace_StateMachine_Starting_State_Complete, PLC2Skill:_Replace_StateMachine_Stop_Command,
+    PLC2Skill:_Replace_StateMachine_Stopping_State_Complete, PLC2Skill:_Replace_StateMachine_Suspend_Command,
+    PLC2Skill:_Replace_StateMachine_Suspending_State_Complete, PLC2Skill:_Replace_StateMachine_Un_Hold_Command,
+    PLC2Skill:_Replace_StateMachine_Unholding_State_Complete, PLC2Skill:_Replace_StateMachine_Unsuspend_Command,
+    PLC2Skill:_Replace_StateMachine_Unsuspending_State_Complete .
