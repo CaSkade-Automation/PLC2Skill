@@ -79,7 +79,7 @@
         rr:predicateObjectMap [
         rr:predicate OPCUA:nodeId;
         rr:objectMap [
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]/@name}.{@name}";
+            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]/@name}.{@name}.value";
             rr:datatype xsd:string; 
                 ]
         ];
@@ -133,7 +133,7 @@
         rr:predicateObjectMap [
         rr:predicate OPCUA:nodeId;
         rr:objectMap [
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]/@name}.{@name}";
+            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]/@name}.{@name}.value";
             rr:datatype xsd:string; 
                 ]
         ];
