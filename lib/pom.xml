@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>de.hsu-hh.ifa.mtp-mapping</groupId>
+		<groupId>de.hsu-hh.ifa.plc2skill</groupId>
 		<artifactId>parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>lib</artifactId>
+	<artifactId>plc2skill-lib</artifactId>
 	<name>MTP-to-Skill</name>
 
 	<build>

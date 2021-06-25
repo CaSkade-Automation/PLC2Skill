@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>de.hsu-hh.ifa.mtp-mapping</groupId>
+		<groupId>de.hsu-hh.ifa.plc2skill</groupId>
 		<artifactId>parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>cli</artifactId>
+	<artifactId>plc2skill-cli</artifactId>
 
 	<dependencies>
 		<dependency>
@@ -18,8 +18,8 @@
 			<version>1.4</version>
 		</dependency>
 		<dependency>
-			<groupId>de.hsu-hh.ifa.mtp-mapping</groupId>
-			<artifactId>lib</artifactId>
+			<groupId>de.hsu-hh.ifa.plc2skill</groupId>
+			<artifactId>plc2skill-lib</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

@@ -3,11 +3,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>de.hsu-hh.ifa.mtp-mapping</groupId>
+		<groupId>de.hsu-hh.ifa.plc2skill</groupId>
 		<artifactId>parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>rest-api</artifactId>
+	<artifactId>plc2skill-rest-api</artifactId>
 	
 	<dependencies>
 		<dependency>
@@ -16,8 +16,8 @@
 			<version>2.9.3</version>
 		</dependency>
 		<dependency>
-			<groupId>de.hsu-hh.ifa.mtp-mapping</groupId>
-			<artifactId>lib</artifactId>
+			<groupId>de.hsu-hh.ifa.plc2skill</groupId>
+			<artifactId>plc2skill-lib</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
