@@ -1,11 +1,10 @@
-package mapping;
+package plc2skill.mapping;
 
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -22,11 +21,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 
-public class MtpToSkillMapper {
+public class Plc2SkillMapper {
 	static String stateMachineTemplateFile = "PLCStateMachine.ttl";
 	static String pattern = "_Replace_";
-	public String endpointURL= "opc.tcp://127.0.0.1:4840"; // IP-address
-	public String plcIdentifier="ns=4;s=|var|CODESYS Control Win V3 x64"; // e.g. ns=4;s=|var|CODESYS Control Win V3 x64
 
 
 	/**
@@ -34,7 +31,7 @@ public class MtpToSkillMapper {
 	 * @param mtpFilePath File path of the MTP AML file
 	 * @return Skill ontology in turtle syntax
 	 */
-	public String executeMapping(String plcOpenFilePath) {
+	public String executeMapping(String endpointUrl, String nodeIdRoot, String plcOpenFilePath) {
 
 		// 1. Execute RML mapping
 		RmlMapper rmlMapper = new RmlMapper();
@@ -44,7 +41,7 @@ public class MtpToSkillMapper {
 		String stateMachines = createStateMachines(plcOpenFilePath);
 		
 		// 3. Add PLC Identifier and EndpointURL of OPC UA Server
-		String completedRmlMappingResult= completeMappingResult(rmlMappingResult);
+		String completedRmlMappingResult= completeMappingResult(endpointUrl, nodeIdRoot, rmlMappingResult);
 
 		// 4. Combine completed rml mapping result with state machines
 		String mappingResult = completedRmlMappingResult + "\n" + stateMachines;
@@ -55,15 +52,14 @@ public class MtpToSkillMapper {
 	/**
 	 * Replaces the ServerIP and PLCIdentifier
 	 */
-	private String completeMappingResult(String rmlMappingResult) {
-		String placeholderIdentifier="PLCIdentifier";
-		String placeholderEndpointURL="ServerIP";
-		String resultFirstStep;
-		String resultSecondStep;
-		resultFirstStep=rmlMappingResult.replaceAll(placeholderIdentifier, plcIdentifier); //Replaces Identifier-Placeholder
-		resultSecondStep=resultFirstStep.replaceAll(placeholderEndpointURL, endpointURL); //Replaces EndpointURL-Placeholder
+	private String completeMappingResult(String endpointUrl, String nodeIdRoot, String rmlMappingResult) {
+		String placeholderIdentifier = "PLCIdentifier";
+		String placeholderEndpointURL = "ServerIP";
+		String resultFirstStep = rmlMappingResult.replaceAll(placeholderIdentifier, nodeIdRoot); //Replaces nodeID-Placeholder
+		String resultSecondStep = resultFirstStep.replaceAll(placeholderEndpointURL, endpointUrl); //Replaces EndpointURL-Placeholder
 		return resultSecondStep;
 	}
+	
 	
 	/**
 	 * Creates a state machine for every service procedure of the given MTP. Note that in our skill model, every Skill (=MTP procedure) has to have its own state machine
