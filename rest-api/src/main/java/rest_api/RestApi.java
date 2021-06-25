@@ -10,11 +10,11 @@ import java.nio.file.StandardCopyOption;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.http.Part;
 
-import mapping.MtpToSkillMapper;
+import plc2skill.mapping.Plc2SkillMapper;
 
 public class RestApi {
 
-	static MtpToSkillMapper mapping = new MtpToSkillMapper();
+	static Plc2SkillMapper mapping = new Plc2SkillMapper();
 
 	public static void main(String[] args) {
 
@@ -30,23 +30,25 @@ public class RestApi {
 		post("/", (request, response) -> {
 			request.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/temp"));
 			
-			Part uploadedFileObject = request.raw().getPart("mtp-file");
+			String endpointUrl = request.raw().getParameter("endpointUrl");
+			String nodeIdRoot = request.raw().getParameter("nodeIdRoot");
+			Part uploadedFileObject = request.raw().getPart("plc-file");
 			
 			File file = new File(uploadDir.getAbsolutePath() + File.separator + getFileName(uploadedFileObject));
 			file.deleteOnExit();
 			
 
 			// make sure to send the file as a multipart/form-data with key "mtp-file"
-			try (InputStream input = request.raw().getPart("mtp-file").getInputStream()) {
+			try (InputStream input = request.raw().getPart("plc-file").getInputStream()) {
 				Files.copy(input, file.toPath() , StandardCopyOption.REPLACE_EXISTING);
 			}
 
-			System.out.println("Uploaded file '" + getFileName(request.raw().getPart("mtp-file")) + "' saved as '"
+			System.out.println("Uploaded file '" + getFileName(request.raw().getPart("plc-file")) + "' saved as '"
 					+ file + "'");
 			
 //			Thread thread = new Thread() {
 //				public void run() {
-					String mappingResult = mapping.executeMapping(file.toString());
+					String mappingResult = mapping.executeMapping(endpointUrl, nodeIdRoot, file.toString());
 //					System.out.println("Mapping done");
 //				}
 //			};
