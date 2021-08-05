@@ -14,7 +14,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
 
     rr:subjectMap [
@@ -42,7 +42,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}";
@@ -52,14 +52,14 @@
         rr:predicateObjectMap [
         rr:predicate cap:hasSkillParameter, OPCUA:organizes;
         rr:objectMap [
-            rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}/SkillParameter/{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/interface/inputVars/variable[./type/derived/@name='TJ.SkillParameter']/@name}";
+            rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}/SkillParameter/{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
             rr:class OPCUA:UAVariable, cap:SkillParameter;
                 ]
         ];
         rr:predicateObjectMap [
         rr:predicate cap:hasSkillOutput, OPCUA:organizes;
         rr:objectMap [
-            rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}/SkillOutput/{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/interface/outputVars/variable[./type/derived/@name='TJ.SkillParameter']/@name}";
+            rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}/SkillOutput/{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
             rr:class OPCUA:UAVariable, cap:SkillOutput; 
                 ]
         ].
@@ -70,16 +70,16 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/inputVars/variable[./type/derived/@name='TJ.SkillParameter']"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]/@name}/SkillParameter/{@name}";
+        rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]/@name}/SkillParameter/{@name}";
         rr:class cap:SkillParameter, OPCUA:UAVariable;
     ];
         rr:predicateObjectMap [
         rr:predicate OPCUA:nodeId;
         rr:objectMap [
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]/@name}.{@name}.value";
+            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]/@name}.{@name}.value";
             rr:datatype xsd:string; 
                 ]
         ];
@@ -124,16 +124,16 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/outputVars/variable[./type/derived/@name='TJ.SkillParameter']"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]/@name}/SkillOutput/{@name}";
+        rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]/@name}/SkillOutput/{@name}";
         rr:class cap:SkillOutput, OPCUA:UAVariable;
     ];
         rr:predicateObjectMap [
         rr:predicate OPCUA:nodeId;
         rr:objectMap [
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]/@name}.{@name}.value";
+            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{./ancestor::addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]/@name}.{@name}.value";
             rr:datatype xsd:string; 
                 ]
         ];
@@ -178,7 +178,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}";
@@ -206,7 +206,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput";
@@ -350,7 +350,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Idle";
@@ -367,7 +367,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Starting";
@@ -385,7 +385,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Execute";
@@ -403,7 +403,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Completing";
@@ -420,7 +420,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Complete";
@@ -438,7 +438,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Resetting";
@@ -455,7 +455,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Holding";
@@ -472,7 +472,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Held";
@@ -489,7 +489,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Unholding";
@@ -506,7 +506,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Suspending";
@@ -523,7 +523,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Suspended";
@@ -540,7 +540,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Unsuspending";
@@ -557,7 +557,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Stopping";
@@ -575,7 +575,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Stopped";
@@ -593,7 +593,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Aborting";
@@ -611,7 +611,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Aborted";
@@ -628,7 +628,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}StateMachine_Clearing";
@@ -647,7 +647,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Idle_DE";
@@ -675,7 +675,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Starting_DE";
@@ -701,7 +701,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Execute_DE";
@@ -727,7 +727,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Holding_DE";
@@ -753,7 +753,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Held_DE";
@@ -779,7 +779,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Unholding_DE";
@@ -805,7 +805,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Suspending_DE";
@@ -831,7 +831,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Suspended_DE";
@@ -857,7 +857,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Unsuspending_DE";
@@ -883,7 +883,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Completing_DE";
@@ -909,7 +909,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Complete_DE";
@@ -935,7 +935,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Resetting_DE";
@@ -961,7 +961,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Aborting_DE";
@@ -987,7 +987,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Aborted_DE";
@@ -1013,7 +1013,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Clearing_DE";
@@ -1039,7 +1039,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Stopping_DE";
@@ -1065,7 +1065,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_CurrentStateOutput_Stopped_DE";
@@ -1091,7 +1091,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}";
@@ -1111,7 +1111,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_SkillCommand";
@@ -1208,7 +1208,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_StartCommand_DE";
@@ -1233,7 +1233,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_HoldCommand_DE";
@@ -1258,7 +1258,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_UnholdCommand_DE";
@@ -1283,7 +1283,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_SuspendCommand_DE";
@@ -1308,7 +1308,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_UnsuspendCommand_DE";
@@ -1333,7 +1333,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_ResetCommand_DE";
@@ -1358,7 +1358,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_AbortCommand_DE";
@@ -1383,7 +1383,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_ClearCommand_DE";
@@ -1408,7 +1408,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
         rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_StopCommand_DE";
@@ -1434,7 +1434,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
 
     rr:subjectMap [
@@ -1452,7 +1452,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
 
     rr:subjectMap [
@@ -1470,7 +1470,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
 
     rr:subjectMap [
@@ -1488,7 +1488,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
 
     rr:subjectMap [
@@ -1507,7 +1507,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
 
     rr:subjectMap [
@@ -1525,7 +1525,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
 
     rr:subjectMap [
@@ -1543,7 +1543,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
 
     rr:subjectMap [
@@ -1561,7 +1561,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
 
     rr:subjectMap [
@@ -1579,7 +1579,7 @@
     rml:logicalSource[
         rml:source "${XMLFileToMap}";
         rml:referenceFormulation ql:XPath;
-        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
 
     rr:subjectMap [
@@ -1602,7 +1602,7 @@
   rml:logicalSource [
     rml:source "${XMLFileToMap}";
     rml:referenceFormulation ql:XPath;
-    rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"];
+    rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"];
 
   rr:subjectMap [
     rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_OPCUAServer";
@@ -1643,7 +1643,7 @@
   rml:logicalSource [
     rml:source "${XMLFileToMap}";
     rml:referenceFormulation ql:XPath;
-    rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/@name]"];
+    rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"];
 
   rr:subjectMap [
     rr:template "http://www.hsu-ifa.de/PLC2Skill#{@name}_OPCUANodeSet";
@@ -1661,7 +1661,7 @@
   	rr:predicateObjectMap [
     rr:predicate OPCUA:containsNode, OPCUA:organizes;
     rr:objectMap [
-	rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}/SkillParameter/{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/interface/inputVars/variable[./type/derived/@name='TJ.SkillParameter']/@name}";
+	rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}/SkillParameter/{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
 	rr:class OPCUA:UAVariable
 ]];
 
@@ -1669,7 +1669,7 @@
   	rr:predicateObjectMap [
     rr:predicate OPCUA:containsNode, OPCUA:organizes;
     rr:objectMap [
-	rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}/SkillOutput/{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='TJ.Skill']/interface/outputVars/variable[./type/derived/@name='TJ.SkillParameter']/@name}";
+	rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}/SkillOutput/{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
 	rr:class OPCUA:UAVariable
 ]];
 #Node CurrentStateOutput
