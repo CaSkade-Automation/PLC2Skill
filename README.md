@@ -6,13 +6,23 @@
 Machine skills are executable functions of machines. Semantic models using ontologies are used to describe skills in a machine-readable way so that they can be registered in and executed from superordinate systems (e.g. Manufacturing Execution Systems). While semantic skill models provide a number of benefits (e.g. querying, reasoning, constraint-checking), they also have a huge drawback: Such models are complex and creating them manually is tedious and error-prone. In addition to that, PLC programmers who plan to implement a certain machine behavior and want to publish it as a skill, most often do not have any expertise in semantic technologies. PLC2Skill is a solution for this problem.
 
 ## How it works
-<img width="800px" src="https://github.com/aljoshakoecher/PLC2Skill/blob/documentation/images/images/PLC2Skill_Workflow.png">
+<div align="center">
+    <img width="600px" align="center" src="https://github.com/aljoshakoecher/PLC2Skill/blob/documentation/images/images/PLC2Skill_Workflow.png">
+</div>
 PLC2Skill is a method to automatically create skill models without any manual modelling efforts that consists of the following steps:
+
 1. A PLC programmer uses the PLC2Skill library when programming a machine. This library helps in correctly programming skills. 
 2. After programming a PLC using the PLC2Skill library, the program has to be exported to PLCopen XML. PLCopen XML is an open exchange format defined in IEC 61131-10. Using this format instead of an API of a PLC programming environment ensures vendor neutrality of PLC2Skill.
 3. The imported PLC open XML file can be mapped into the skill model that is described [here](https://github.com/aljoshakoecher/Machine-Skill-Model).
 4. With this model, it is possible to register skills at a skill based control platform that also follows the skill model
 
+## Demo-Video
+In case you want to see PLC2Skill in action, checkout this video of a little demonstration in a lab environment.
+<div align="center">
+    <a href="https://youtu.be/24dwANeT4Cs">
+        <img width="600px" align="center" src="https://github.com/aljoshakoecher/plc2skill/blob/documentation/images/images/PLC2Skill_DemoVideo-Screenshot.png?raw=true">
+    </a>
+</div>
 
 ## How to use the PLC2Skill Library
 The PLC2Skill library has to be imported into a PLC program. Skills can then be created by programming a function block (FB) that extends the abstract *skill* FB. Optional input parameters and output variables can be added by using the library's struct *SkillVariable*. The abstract *Skill* FB has an internal state machine (the one defined in ISA 88), that ensures that transitions can only be fired in the "correct" state. In every state, this state machine calls methods having the same name. For example, when switching to the "execute" state, the method execute() is called. These methods of the skill FB are empty because what is going to happen inside these methods is application-specific. In order for application-specific code to be called, these methods have to be overridden inside a concrete skill implementation that extends the library's skill FB.
@@ -38,3 +48,15 @@ The REST-API can be tested with Tools such as Postman and used e.g. by web appli
 
 ### Library
 You can also include the mapping library which is used in both the CLI-application and REST API in your own projects. In order to do so, import `Plc2SkillMapper` and after obtaining a new instance of the mapper, use `executeMapping(<endpointUr>,<nodeIdRoot>, <Path to your MTP file>)`. A more detailed instruction on how to use the library will follow soon.
+
+## How to cite
+We are excited about everyone using PLC2Skill in their own applications. If you use SkillUp in research, please consider giving credit by citing the following paper:
+
+```
+@inproceedings{KJF_AMethodtoAutomatically_2021,
+ author = {Köcher, Aljosha and Jeleniewski, Tom and Fay, Alexander},
+ title = {{A Method to Automatically Generate Semantic Skill Models from PLC Code}},
+ booktitle = {{IECON 2021 The 47th Annual Conference of the IEEE Industrial Electronics Society}},
+ year = {2021},
+}
+```
