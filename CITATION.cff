@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Koecher"
+  given-names: "Aljosha"
+  orcid: "https://orcid.org/0000-0002-7228-8387"
+- family-names: "Jeleniewski"
+  given-names: "Tom"
+title: "PLC2Skill - Automatically Generate Semantic Skill Models from PLC Code"
+version: 1.0.0
+date-released: 2021-11-08
+url: "https://github.com/aljoshakoecher/skill-plc2skill"
+preferred-citation:
+  type: conference-paper
+  authors:
+  - family-names: "Koecher"
+    given-names: "Aljosha"
+    orcid: "https://orcid.org/0000-0002-7228-8387"
+  - family-names: "Jeleniewski"
+    given-names: "Tom"
+  - family-names: "Fay"
+    given-names: "Alexander"  
+  collection-title: "IECON 2021 The 47th Annual Conference of the IEEE Industrial Electronics Society"
+  year: 2021
+  conference:
+    name: IECON 2021 The 47th Annual Conference of the IEEE Industrial Electronics Society
+    location: Toronto, Canada (online)
+    date-start: 2021-10-13
+    date-end: 2020-10-18
+  title: "A Method to Automatically Generate Semantic Skill Models from PLC Code"
