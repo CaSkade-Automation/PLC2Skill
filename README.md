@@ -50,7 +50,7 @@ The REST-API can be tested with Tools such as Postman and used e.g. by web appli
 You can also include the mapping library which is used in both the CLI-application and REST API in your own projects. In order to do so, import `Plc2SkillMapper` and after obtaining a new instance of the mapper, use `executeMapping(<endpointUr>,<nodeIdRoot>, <Path to your MTP file>)`. A more detailed instruction on how to use the library will follow soon.
 
 ## How to cite
-We are excited about everyone using PLC2Skill in their own applications. If you use SkillUp in research, please consider giving credit by citing the following paper:
+We are excited about everyone using PLC2Skill in their own applications. If you use PLC2Skill in research, please consider giving credit by citing the following paper:
 
 ```
 @inproceedings{KJF_AMethodtoAutomatically_2021,
