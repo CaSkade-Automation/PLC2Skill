@@ -61,8 +61,8 @@ public class ConsoleApplication {
 	private Options getOptions() {
 		Options options = new Options();
 		options.addOption("h", "help", false, "Print help");
-		options.addOption("f", "filename", true, "File name of the PLCopen XML file that should be mapped");
-		options.addOption("e", "endpointUrl", true, "EndpointUrl of this skills UA Server");
+		options.addRequiredOption("f", "filename", true, "File name of the PLCopen XML file that should be mapped");
+		options.addRequiredOption("e", "endpointUrl", true, "EndpointUrl of this skills UA Server");
 		options.addOption("n", "nodeIdRoot", true, "Root component of this UA Server's node IDs");
 
 		return options;
