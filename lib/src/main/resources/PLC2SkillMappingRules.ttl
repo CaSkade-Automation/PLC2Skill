@@ -25,7 +25,6 @@
         rr:predicate OPCUA:nodeId;
         rr:objectMap[
             rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}";
-            rr:template "nodeid";
             rr:datatype xsd:string;
         ]
     ];
