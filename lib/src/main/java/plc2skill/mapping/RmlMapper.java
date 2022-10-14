@@ -5,13 +5,18 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import be.ugent.idlab.knows.functions.agent.Agent;
+import be.ugent.idlab.knows.functions.agent.AgentFactory;
 import be.ugent.rml.Executor;
 import be.ugent.rml.Utils;
-import be.ugent.rml.functions.FunctionLoader;
 import be.ugent.rml.records.RecordsFactory;
 import be.ugent.rml.store.Quad;
 import be.ugent.rml.store.QuadStore;
@@ -25,11 +30,13 @@ public class RmlMapper {
 
 	static String mappingDefinition = "PLC2SkillMappingRules.ttl";
 
-	public String executeRmlMapping(String xmlSourceDocument) {
+	public QuadStore executeRmlMapping(String xmlSourceDocument) {
 
 		// mapping file that needs to be executed
 		String userDirectory = System.getProperty("user.dir");
 		File mappingFile = new File(userDirectory + "\\" + mappingDefinition);
+		Path fullXmlSourcePath = Paths.get(userDirectory, xmlSourceDocument);
+		Files.exists(fullXmlSourcePath);
 		try {
 
 			URL resource = this.getClass().getClassLoader().getResource(mappingDefinition);
@@ -50,7 +57,7 @@ public class RmlMapper {
 
 			rmlStore.removeQuads(null, predicate, object);
 
-			Term newObject = new Literal(xmlSourceDocument);
+			Term newObject = new Literal(fullXmlSourcePath.toString());
 			for (Term subject : subjects) {
 				rmlStore.addQuad(subject, predicate, newObject);
 			}
@@ -60,30 +67,37 @@ public class RmlMapper {
 			RecordsFactory factory = new RecordsFactory(mappingFile.getParent());
 
 			// Set up the functions used during the mapping
-			Map<String, Class> libraryMap = new HashMap<>();
+			Map<String, String> libraryMap = new HashMap<>();
 
-			FunctionLoader functionLoader = new FunctionLoader(null, libraryMap);
-
+			Agent functionAgent = AgentFactory.createFromFnO(libraryMap);
+			
 			// Set up the outputstore (needed when you want to output something else than
 			// nquads)
 			QuadStore outputStore = new RDF4JStore();
 
 			// Create the Executor
-			Executor executor = new Executor(rmlStore, factory, functionLoader, outputStore,
-					Utils.getBaseDirectiveTurtle(mappingStream));
+			Executor executor = new Executor(rmlStore, factory, outputStore,Utils.getBaseDirectiveTurtle(mappingStream), functionAgent);
 
 			// Execute the mapping
-			QuadStore mappedQuads = executor.execute(null);
+			QuadStore mappedQuads = executor.execute(null).get(new NamedNode("rmlmapper://default.store"));
 						
-			// Return the result as a turtle string
-			Writer sW = new StringWriter();
-			mappedQuads.write(sW, "turtle");
-			String result = sW.toString();
-
-			return result;
+			// Return the quads
+			return mappedQuads;
 		} catch (Exception e) {
 			System.out.println("An error happend while executing the RML mapping" + e.toString());
-			return "";
+			return new RDF4JStore();
 		}
+	}
+	
+	public static String convertResultToString(QuadStore resultQuads) {
+		Writer sW = new StringWriter();
+		try {
+			resultQuads.write(sW, "turtle");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String resultString = sW.toString();
+		return resultString;
 	}
 }
