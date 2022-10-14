@@ -25,16 +25,16 @@ public class ConsoleApplication {
 			return;
 		}
 		
-		if (line.hasOption("filename") && line.hasOption("endpointUrl") && line.hasOption("nodeIdRoot")) {
+		if (line.hasOption("filename") && line.hasOption("endpointUrl")) {
 			System.out.println("Started PLC-Code Mapping to Skills");
 			String path = line.getOptionValue("filename");
 			String endpointUrl = line.getOptionValue("endpointUrl");
 			String nodeIdRoot = line.getOptionValue("nodeIdRoot");
 			System.out.println("fileName: " + path + "\nendpointUrl: " + endpointUrl + "\nnodeIdRoot: " + nodeIdRoot);
-			String result = mapping.executeMapping(endpointUrl, nodeIdRoot, path);
+			String result = mapping.executeMapping(path, endpointUrl, nodeIdRoot);
 			writeFile(result, outputFilename);
 		} else {
-			System.out.println("Missing one or more of the parameters -f, -e and -n...");
+			System.out.println("Missing one or both mandatory parameters -f and -e...");
 			printHelp();
 		}
 	}
