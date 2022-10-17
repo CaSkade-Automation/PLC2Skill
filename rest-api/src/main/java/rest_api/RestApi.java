@@ -10,16 +10,20 @@ import java.nio.file.StandardCopyOption;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.http.Part;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import plc2skill.mapping.Plc2SkillMapper;
 
 public class RestApi {
 
+	private final static Logger logger = LoggerFactory.getLogger(RestApi.class);
 	static Plc2SkillMapper mapping = new Plc2SkillMapper();
 
 	public static void main(String[] args) {
 
 		port(9191);								// Set port of this webservice
-		System.out.println("Running MTP-Mapping-Service at localhost:9191");
+		logger.info("Running MTP-Mapping-Service at localhost:9191");
 		
 		File uploadDir = new File("upload");	
 		uploadDir.mkdir();						// Create new folder if it doesn't exist and add it to static files folder

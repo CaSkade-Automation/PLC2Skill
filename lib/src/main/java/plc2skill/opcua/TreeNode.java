@@ -21,7 +21,6 @@ public class TreeNode<T> implements Iterable<TreeNode<T>> {
 	}
 	
 	public void addChild(TreeNode<T> newChildNode) {
-		System.out.println("setting parent to new child. this data: " + this.data);
 		newChildNode.setParent(this);
 		this.children.add(newChildNode);
 		this.addToIndex(newChildNode);
@@ -43,7 +42,6 @@ public class TreeNode<T> implements Iterable<TreeNode<T>> {
 	private void addToIndex(TreeNode<T> node) {
 		this.elementsIndex.add(node);
 		if (!this.isRoot()) {
-			System.out.println("adding to parent: " + parent.data);
 			parent.addToIndex(node);
 		}
 	}

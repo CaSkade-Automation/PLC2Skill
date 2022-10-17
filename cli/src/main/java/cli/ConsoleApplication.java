@@ -10,10 +10,14 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import plc2skill.mapping.Plc2SkillMapper;
 
 public class ConsoleApplication {
+	
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	Plc2SkillMapper mapping = new Plc2SkillMapper();
 	String outputFilename = "MappingOutput.ttl";
 
@@ -26,15 +30,15 @@ public class ConsoleApplication {
 		}
 		
 		if (line.hasOption("filename") && line.hasOption("endpointUrl")) {
-			System.out.println("Started PLC-Code Mapping to Skills");
+			logger.info("Started PLC-Code Mapping to Skills");
 			String path = line.getOptionValue("filename");
 			String endpointUrl = line.getOptionValue("endpointUrl");
 			String nodeIdRoot = line.getOptionValue("nodeIdRoot");
-			System.out.println("fileName: " + path + "\nendpointUrl: " + endpointUrl + "\nnodeIdRoot: " + nodeIdRoot);
+			logger.info("fileName: " + path + "\nendpointUrl: " + endpointUrl + "\nnodeIdRoot: " + nodeIdRoot);
 			String result = mapping.executeMapping(path, endpointUrl, nodeIdRoot);
 			writeFile(result, outputFilename);
 		} else {
-			System.out.println("Missing one or both mandatory parameters -f and -e...");
+			logger.error("Missing one or both mandatory parameters -f and -e...");
 			printHelp();
 		}
 	}
@@ -49,10 +53,8 @@ public class ConsoleApplication {
 			line = parser.parse(options, args);
 
 		} catch (ParseException ex) {
-
-			System.err.println("Failed to parse command line arguments");
-			System.err.println(ex.toString());
-
+			logger.error("Failed to parse command line arguments");
+			logger.error(ex.toString());
 			System.exit(1);
 		}
 		return line;
@@ -80,7 +82,7 @@ public class ConsoleApplication {
 			writer.write(mappedModel);
 			writer.close();
 		} catch (IOException e) {
-			System.out.println("Error while writing the file");
+			logger.error("Error while writing the file");
 			e.printStackTrace();
 		}
 	}

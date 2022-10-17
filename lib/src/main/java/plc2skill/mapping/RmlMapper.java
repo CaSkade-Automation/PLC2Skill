@@ -13,6 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import be.ugent.idlab.knows.functions.agent.Agent;
 import be.ugent.idlab.knows.functions.agent.AgentFactory;
 import be.ugent.rml.Executor;
@@ -28,6 +31,7 @@ import be.ugent.rml.term.Term;
 
 public class RmlMapper {
 
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	static String mappingDefinition = "PLC2SkillMappingRules.ttl";
 
 	public QuadStore executeRmlMapping(String xmlSourceDocument) {
@@ -84,7 +88,7 @@ public class RmlMapper {
 			// Return the quads
 			return mappedQuads;
 		} catch (Exception e) {
-			System.out.println("An error happend while executing the RML mapping" + e.toString());
+			logger.error("An error happend while executing the RML mapping" + e.toString());
 			return new RDF4JStore();
 		}
 	}
