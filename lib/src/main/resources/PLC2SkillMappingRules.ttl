@@ -24,8 +24,7 @@
         rr:predicateObjectMap[
         rr:predicate OPCUA:nodeId;
         rr:objectMap[
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}";
-            rr:template "nodeid";
+            rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}";
             rr:datatype xsd:string;
         ]
     ];
@@ -73,48 +72,48 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}/SkillParameter/{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
+        rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}/SkillParameter/{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
         rr:class cap:SkillParameter, OPCUA:UAVariable;
     ];
         rr:predicateObjectMap [
         rr:predicate OPCUA:nodeId;
         rr:objectMap [
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}.value";
+            rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}.value";
             rr:datatype xsd:string; 
                 ]
         ];
         rr:predicateObjectMap [
         rr:predicate cap:value;
         rr:objectMap [
-            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='value']/simpleValue/@value}";
+            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='value']/simpleValue/@value}";
             rr:datatype xsd:string; 
                 ]
              ];
         rr:predicateObjectMap [
         rr:predicate cap:hasDefaultValue; 
         rr:objectMap [
-            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='default']/simpleValue/@value}";
+            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='default']/simpleValue/@value}";
             rr:datatype xsd:string; 
                 ]
         ];
         rr:predicateObjectMap [
         rr:predicate cap:hasVariableName; 
         rr:objectMap [
-            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='name']/simpleValue/@value}";
+            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='name']/simpleValue/@value}";
             rr:datatype xsd:string; 
                 ]
         ];
         rr:predicateObjectMap [
         rr:predicate cap:hasVariableType; 
         rr:objectMap [
-            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='paramType']/simpleValue/@value}";
+            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='paramType']/simpleValue/@value}";
             rr:datatype xsd:string; 
                 ]
         ];
         rr:predicateObjectMap [
         rr:predicate cap:isRequired; 
         rr:objectMap [
-            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='required']/simpleValue/@value}";
+            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='required']/simpleValue/@value}";
             rr:datatype xsd:boolean; 
                 ]
         ].
@@ -127,48 +126,48 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}/SkillOutput/{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
+        rr:template "http://www.hsu-ifa.de/PLC2Skill#skillFB/{@name}/SkillOutput/{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
         rr:class cap:SkillOutput, OPCUA:UAVariable;
     ];
         rr:predicateObjectMap [
         rr:predicate OPCUA:nodeId;
         rr:objectMap [
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}.value";
+            rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}.value";
             rr:datatype xsd:string; 
                 ]
         ];
         rr:predicateObjectMap [
         rr:predicate cap:value;
         rr:objectMap [
-            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='value']/simpleValue/@value}";
+            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='value']/simpleValue/@value}";
             rr:datatype xsd:string; 
                 ]
              ];
         rr:predicateObjectMap [
         rr:predicate cap:hasDefaultValue; 
         rr:objectMap [
-            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='default']/simpleValue/@value}";
+            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='default']/simpleValue/@value}";
             rr:datatype xsd:string; 
                 ]
         ];
         rr:predicateObjectMap [
         rr:predicate cap:hasVariableName; 
         rr:objectMap [
-            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='name']/simpleValue/@value}";
+            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='name']/simpleValue/@value}";
             rr:datatype xsd:string; 
                 ]
         ];
         rr:predicateObjectMap [
         rr:predicate cap:hasVariableType; 
         rr:objectMap [
-            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='paramType']/simpleValue/@value}";
+            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='paramType']/simpleValue/@value}";
             rr:datatype xsd:string; 
                 ]
         ];
         rr:predicateObjectMap [
         rr:predicate cap:isRequired; 
         rr:objectMap [
-            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=current()/type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='required']/simpleValue/@value}";
+            rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='required']/simpleValue/@value}";
             rr:datatype xsd:boolean; 
                 ]
         ].
@@ -215,7 +214,7 @@
         rr:predicateObjectMap [
         rr:predicate OPCUA:nodeId;
         rr:objectMap [
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.currentState";
+            rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.currentState";
             rr:datatype xsd:string; 
                 ]
         ];
@@ -1120,7 +1119,7 @@
         rr:predicateObjectMap[
         rr:predicate OPCUA:nodeId;
         rr:objectMap[
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.transition";
+            rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.transition";
             rr:datatype xsd:string
         ]
         
@@ -1620,7 +1619,7 @@
 	rr:predicateObjectMap [
     rr:predicate OPCUA:hasEndpointUrl;
     rr:objectMap [   
-	rr:template "ServerIP";
+	rr:template "__ServerEndpointUrl__";
 	rr:datatype xsd:string
 ]];	
 		rr:predicateObjectMap [

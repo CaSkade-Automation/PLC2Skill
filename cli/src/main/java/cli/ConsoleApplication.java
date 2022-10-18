@@ -3,6 +3,7 @@ package cli;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -10,11 +11,14 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import plc2skill.mapping.Plc2SkillMapper;
 
 public class ConsoleApplication {
-	Plc2SkillMapper mapping = new Plc2SkillMapper();
+	
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	String outputFilename = "MappingOutput.ttl";
 
 	public void run(String[] args) {
@@ -25,16 +29,23 @@ public class ConsoleApplication {
 			return;
 		}
 		
-		if (line.hasOption("filename") && line.hasOption("endpointUrl") && line.hasOption("nodeIdRoot")) {
-			System.out.println("Started PLC-Code Mapping to Skills");
-			String path = line.getOptionValue("filename");
+		// fileName and endpointUrl are required, rest is optional		
+		if (line.hasOption("filename") && line.hasOption("endpointUrl")) {
+			logger.info("Started PLC-Code Mapping to Skills");
+			Path plcOpenPath = Path.of(line.getOptionValue("filename"));
 			String endpointUrl = line.getOptionValue("endpointUrl");
+			String user = line.getOptionValue("user");
+			String password = line.getOptionValue("password");
 			String nodeIdRoot = line.getOptionValue("nodeIdRoot");
-			System.out.println("fileName: " + path + "\nendpointUrl: " + endpointUrl + "\nnodeIdRoot: " + nodeIdRoot);
-			String result = mapping.executeMapping(endpointUrl, nodeIdRoot, path);
+			logger.info("fileName: " + plcOpenPath + "\nendpointUrl: " + endpointUrl + "\nnodeIdRoot: " + nodeIdRoot);
+			Plc2SkillMapper mapper = new Plc2SkillMapper.Builder(plcOpenPath, endpointUrl)
+													.setUser(user, password)
+													.setNodeIdRoot(nodeIdRoot)
+													.build();
+			String result = mapper.executeMapping();
 			writeFile(result, outputFilename);
 		} else {
-			System.out.println("Missing one or more of the parameters -f, -e and -n...");
+			logger.error("Missing one or both mandatory parameters -f and -e...");
 			printHelp();
 		}
 	}
@@ -49,10 +60,8 @@ public class ConsoleApplication {
 			line = parser.parse(options, args);
 
 		} catch (ParseException ex) {
-
-			System.err.println("Failed to parse command line arguments");
-			System.err.println(ex.toString());
-
+			logger.error("Failed to parse command line arguments");
+			logger.error(ex.toString());
 			System.exit(1);
 		}
 		return line;
@@ -61,9 +70,11 @@ public class ConsoleApplication {
 	private Options getOptions() {
 		Options options = new Options();
 		options.addOption("h", "help", false, "Print help");
-		options.addOption("f", "filename", true, "File name of the PLCopen XML file that should be mapped");
-		options.addOption("e", "endpointUrl", true, "EndpointUrl of this skills UA Server");
-		options.addOption("n", "nodeIdRoot", true, "Root component of this UA Server's node IDs");
+		options.addRequiredOption("f", "filename", true, "File name of the PLCopen XML file that should be mapped");
+		options.addRequiredOption("e", "endpointUrl", true, "EndpointUrl of this skills OPC UA Server");
+		options.addOption("u", "user", true, "Username of the OPC UA Server");
+		options.addOption("p", "password", true, "Password of the OPC UA Server");
+		options.addOption("n", "nodeIdRoot", true, "Root component of this OPC UA Server's node IDs");
 
 		return options;
 	}
@@ -80,7 +91,7 @@ public class ConsoleApplication {
 			writer.write(mappedModel);
 			writer.close();
 		} catch (IOException e) {
-			System.out.println("Error while writing the file");
+			logger.error("Error while writing the file");
 			e.printStackTrace();
 		}
 	}

@@ -1,0 +1,513 @@
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Abort_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Abort_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_AbortCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Aborted> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Aborted>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Aborted_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Aborting> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Aborting>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Aborting_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Clear_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Clear_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_ClearCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Clearing> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Clearing>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Clearing_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Complete> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Complete>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Complete_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Completing> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Completing>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Completing_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Execute> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Execute>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Execute_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Held> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Held>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Held_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Hold_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Hold_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_HoldCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Holding> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Holding>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Holding_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Idle> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Idle>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Idle_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Reset_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Reset_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_ResetCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Resetting> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Resetting>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Resetting_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Start_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Start_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_StartCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Starting> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Starting>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Starting_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Stop_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Stop_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_StopCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Stopped> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Stopped>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Stopped_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Stopping> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Stopping>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Stopping_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Suspend_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Suspend_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_SuspendCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Suspended> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Suspended>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Suspended_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Suspending> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Suspending>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Suspending_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Un-Hold_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Un-Hold_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_UnholdCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Un-Suspend_Command> a
+    <http://www.hsu-ifa.de/ontologies/ISA-TR88#Unsuspend_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_UnsuspendCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Unholding> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Unholding>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Unholding_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Unsuspending> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Unsuspending>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Unsuspending_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_AbortCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Abort>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_ClearCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Clear>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput> a <http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description>,
+    <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>, <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#Expression_Goal> "ActualValue";
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#is_Instance_Description_of_Data_Element>
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Aborted_DE>, <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Aborting_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Clearing_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Complete_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Completing_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Execute_DE>, <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Held_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Holding_DE>, <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Idle_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Resetting_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Starting_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Stopped_DE>, <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Stopping_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Suspended_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Suspending_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Unholding_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Unsuspending_DE>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#nodeId> "|var|CODESYS Control Win V3 x64.Application.PLC_PRG.drillingSkill_1.currentState" .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Aborted_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Aborted>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Aborting_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Aborting>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Clearing_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Clearing>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Complete_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Complete>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Completing_DE>
+  a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Completing>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Execute_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Execute>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Held_DE> a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Held>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Holding_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Holding>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Idle_DE> a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Idle>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Resetting_DE>
+  a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Resetting>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Starting_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Starting>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Stopped_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Stopped>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Stopping_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Stopping>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Suspended_DE>
+  a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Suspended>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Suspending_DE>
+  a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Suspending>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Unholding_DE>
+  a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Unholding>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput_Unsuspending_DE>
+  a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Unsuspending>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_HoldCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Hold>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_OPCUANodeSet> a <http://www.hsu-ifa.de/ontologies/OpcUa#UANodeSet>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#containsNode> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_SkillCommand>, <http://www.hsu-ifa.de/PLC2Skill#skillFB/drillingSkill_1>,
+    <http://www.hsu-ifa.de/PLC2Skill#skillFB/drillingSkill_1/SkillOutput/drillingResult>,
+    <http://www.hsu-ifa.de/PLC2Skill#skillFB/drillingSkill_1/SkillParameter/numberOfHoles>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#organizes> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_SkillCommand>, <http://www.hsu-ifa.de/PLC2Skill#skillFB/drillingSkill_1>,
+    <http://www.hsu-ifa.de/PLC2Skill#skillFB/drillingSkill_1/SkillOutput/drillingResult>,
+    <http://www.hsu-ifa.de/PLC2Skill#skillFB/drillingSkill_1/SkillParameter/numberOfHoles> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_OPCUAServer> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAServer>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#hasEndpointUrl> "opc.tcp://localhost:4840";
+  <http://www.hsu-ifa.de/ontologies/OpcUa#hasMessageSecurityMode> <http://www.hsu-ifa.de/ontologies/OpcUa#MessageSecurityMode_None>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#hasNodeSet> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_OPCUANodeSet>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#hasSecurityPolicy> <http://www.hsu-ifa.de/ontologies/OpcUa#SecurityPolicy_None> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_ResetCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Reset>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_SkillCommand> a <http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description>,
+    <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>, <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommand>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#Expression_Goal> "ActualValue";
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#is_Instance_Description_of_Data_Element>
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_AbortCommand_DE>, <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_ClearCommand_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_HoldCommand_DE>, <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_ResetCommand_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_StartCommand_DE>, <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_StopCommand_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_SuspendCommand_DE>, <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_UnholdCommand_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_UnsuspendCommand_DE>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#nodeId> "|var|CODESYS Control Win V3 x64.Application.PLC_PRG.drillingSkill_1.transition" .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_StartCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Start>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_StopCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Stop>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_SuspendCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Suspend>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_UnholdCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Unhold>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_UnsuspendCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Unsuspend>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Abort_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Abort_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_AbortCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Aborted> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Aborted>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Aborted_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Aborting> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Aborting>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Aborting_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Clear_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Clear_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_ClearCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Clearing> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Clearing>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Clearing_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Complete> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Complete>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Complete_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Completing> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Completing>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Completing_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Execute> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Execute>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Execute_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Held> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Held>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Held_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Hold_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Hold_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_HoldCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Holding> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Holding>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Holding_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Idle> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Idle>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Idle_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Reset_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Reset_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_ResetCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Resetting> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Resetting>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Resetting_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Start_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Start_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_StartCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Starting> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Starting>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Starting_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Stop_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Stop_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_StopCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Stopped> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Stopped>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Stopped_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Stopping> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Stopping>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Stopping_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Suspend_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Suspend_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_SuspendCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Suspended> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Suspended>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Suspended_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Suspending> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Suspending>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Suspending_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Un-Hold_Command> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Un-Hold_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_UnholdCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Un-Suspend_Command> a
+    <http://www.hsu-ifa.de/ontologies/ISA-TR88#Unsuspend_Command>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_UnsuspendCommand_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Unholding> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Unholding>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Unholding_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Unsuspending> a <http://www.hsu-ifa.de/ontologies/ISA-TR88#Unsuspending>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Unsuspending_DE> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_AbortCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Abort>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_ClearCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Clear>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput> a <http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description>,
+    <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>, <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#Expression_Goal> "ActualValue";
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#is_Instance_Description_of_Data_Element>
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Aborted_DE>, <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Aborting_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Clearing_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Complete_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Completing_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Execute_DE>, <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Held_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Holding_DE>, <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Idle_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Resetting_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Starting_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Stopped_DE>, <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Stopping_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Suspended_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Suspending_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Unholding_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Unsuspending_DE>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#nodeId> "|var|CODESYS Control Win V3 x64.Application.PLC_PRG.punchingSkill_1.currentState" .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Aborted_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Aborted>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Aborting_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Aborting>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Clearing_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Clearing>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Complete_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Complete>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Completing_DE>
+  a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Completing>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Execute_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Execute>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Held_DE> a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Held>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Holding_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Holding>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Idle_DE> a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Idle>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Resetting_DE>
+  a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Resetting>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Starting_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Starting>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Stopped_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Stopped>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Stopping_DE> a
+    <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Stopping>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Suspended_DE>
+  a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Suspended>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Suspending_DE>
+  a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Suspending>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Unholding_DE>
+  a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Unholding>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput_Unsuspending_DE>
+  a <http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_CurrentState_Unsuspending>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#CurrentStateOutput_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_HoldCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Hold>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_OPCUANodeSet> a <http://www.hsu-ifa.de/ontologies/OpcUa#UANodeSet>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#containsNode> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_SkillCommand>, <http://www.hsu-ifa.de/PLC2Skill#skillFB/punchingSkill_1>,
+    <http://www.hsu-ifa.de/PLC2Skill#skillFB/punchingSkill_1/SkillOutput/drillingResult>,
+    <http://www.hsu-ifa.de/PLC2Skill#skillFB/punchingSkill_1/SkillParameter/numberOfHoles>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#organizes> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_SkillCommand>, <http://www.hsu-ifa.de/PLC2Skill#skillFB/punchingSkill_1>,
+    <http://www.hsu-ifa.de/PLC2Skill#skillFB/punchingSkill_1/SkillOutput/drillingResult>,
+    <http://www.hsu-ifa.de/PLC2Skill#skillFB/punchingSkill_1/SkillParameter/numberOfHoles> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_OPCUAServer> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAServer>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#hasEndpointUrl> "opc.tcp://localhost:4840";
+  <http://www.hsu-ifa.de/ontologies/OpcUa#hasMessageSecurityMode> <http://www.hsu-ifa.de/ontologies/OpcUa#MessageSecurityMode_None>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#hasNodeSet> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_OPCUANodeSet>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#hasSecurityPolicy> <http://www.hsu-ifa.de/ontologies/OpcUa#SecurityPolicy_None> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_ResetCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Reset>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_SkillCommand> a <http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description>,
+    <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>, <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommand>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#Expression_Goal> "ActualValue";
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#is_Instance_Description_of_Data_Element>
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_AbortCommand_DE>, <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_ClearCommand_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_HoldCommand_DE>, <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_ResetCommand_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_StartCommand_DE>, <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_StopCommand_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_SuspendCommand_DE>, <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_UnholdCommand_DE>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_UnsuspendCommand_DE>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#nodeId> "|var|CODESYS Control Win V3 x64.Application.PLC_PRG.punchingSkill_1.transition" .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_StartCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Start>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_StopCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Stop>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_SuspendCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Suspend>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_UnholdCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Unhold>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_UnsuspendCommand_DE> a <http://www.hsu-ifa.de/ontologies/OpcUa#UAVariable>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description> <http://www.hsu-ifa.de/ontologies/capability-model#PLC2Skill_Command_Unsuspend>;
+  <http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description> <http://www.hsu-ifa.de/ontologies/capability-model#SkillCommandVariable_TD> .
+
+<http://www.hsu-ifa.de/PLC2Skill#skillFB/drillingSkill_1> a <http://www.hsu-ifa.de/ontologies/capability-model#OpcUaVariableSkill>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#nodeId> "|var|CODESYS Control Win V3 x64.Application.PLC_PRG.drillingSkill_1";
+  <http://www.hsu-ifa.de/ontologies/OpcUa#organizes> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput>,
+    <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_SkillCommand>, <http://www.hsu-ifa.de/PLC2Skill#skillFB/drillingSkill_1/SkillOutput/drillingResult>,
+    <http://www.hsu-ifa.de/PLC2Skill#skillFB/drillingSkill_1/SkillParameter/numberOfHoles>;
+  <http://www.hsu-ifa.de/ontologies/capability-model#hasCurrentState> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine_Idle>;
+  <http://www.hsu-ifa.de/ontologies/capability-model#hasCurrentStateOutput> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_CurrentStateOutput>;
+  <http://www.hsu-ifa.de/ontologies/capability-model#hasSkillCommand> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1_SkillCommand>;
+  <http://www.hsu-ifa.de/ontologies/capability-model#hasSkillOutput> <http://www.hsu-ifa.de/PLC2Skill#skillFB/drillingSkill_1/SkillOutput/drillingResult>;
+  <http://www.hsu-ifa.de/ontologies/capability-model#hasSkillParameter> <http://www.hsu-ifa.de/PLC2Skill#skillFB/drillingSkill_1/SkillParameter/numberOfHoles>;
+  <http://www.hsu-ifa.de/ontologies/capability-model#hasStateMachine> <http://www.hsu-ifa.de/PLC2Skill#drillingSkill_1StateMachine> .
+
+<http://www.hsu-ifa.de/PLC2Skill#skillFB/punchingSkill_1> a <http://www.hsu-ifa.de/ontologies/capability-model#OpcUaVariableSkill>;
+  <http://www.hsu-ifa.de/ontologies/OpcUa#nodeId> "|var|CODESYS Control Win V3 x64.Application.PLC_PRG.punchingSkill_1";
+  <http://www.hsu-ifa.de/ontologies/OpcUa#organizes> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput>,
+    <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_SkillCommand>, <http://www.hsu-ifa.de/PLC2Skill#skillFB/punchingSkill_1/SkillOutput/drillingResult>,
+    <http://www.hsu-ifa.de/PLC2Skill#skillFB/punchingSkill_1/SkillParameter/numberOfHoles>;
+  <http://www.hsu-ifa.de/ontologies/capability-model#hasCurrentState> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine_Idle>;
+  <http://www.hsu-ifa.de/ontologies/capability-model#hasCurrentStateOutput> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_CurrentStateOutput>;
+  <http://www.hsu-ifa.de/ontologies/capability-model#hasSkillCommand> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1_SkillCommand>;
+  <http://www.hsu-ifa.de/ontologies/capability-model#hasSkillOutput> <http://www.hsu-ifa.de/PLC2Skill#skillFB/punchingSkill_1/SkillOutput/drillingResult>;
+  <http://www.hsu-ifa.de/ontologies/capability-model#hasSkillParameter> <http://www.hsu-ifa.de/PLC2Skill#skillFB/punchingSkill_1/SkillParameter/numberOfHoles>;
+  <http://www.hsu-ifa.de/ontologies/capability-model#hasStateMachine> <http://www.hsu-ifa.de/PLC2Skill#punchingSkill_1StateMachine> .
+
