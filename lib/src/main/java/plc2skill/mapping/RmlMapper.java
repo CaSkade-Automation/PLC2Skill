@@ -70,17 +70,12 @@ public class RmlMapper {
 			// (local file) data sources
 			RecordsFactory factory = new RecordsFactory(mappingFile.getParent());
 
-			// Set up the functions used during the mapping
-			Map<String, String> libraryMap = new HashMap<>();
-
-			Agent functionAgent = AgentFactory.createFromFnO(libraryMap);
-			
 			// Set up the outputstore (needed when you want to output something else than
 			// nquads)
 			QuadStore outputStore = new RDF4JStore();
 
 			// Create the Executor
-			Executor executor = new Executor(rmlStore, factory, outputStore,Utils.getBaseDirectiveTurtle(mappingStream), functionAgent);
+			Executor executor = new Executor(rmlStore, factory, outputStore,Utils.getBaseDirectiveTurtle(mappingStream), null);
 
 			// Execute the mapping
 			QuadStore mappedQuads = executor.execute(null).get(new NamedNode("rmlmapper://default.store"));
