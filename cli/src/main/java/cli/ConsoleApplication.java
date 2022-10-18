@@ -3,6 +3,7 @@ package cli;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -31,7 +32,7 @@ public class ConsoleApplication {
 		// fileName and endpointUrl are required, rest is optional		
 		if (line.hasOption("filename") && line.hasOption("endpointUrl")) {
 			logger.info("Started PLC-Code Mapping to Skills");
-			String plcOpenPath = line.getOptionValue("filename");
+			Path plcOpenPath = Path.of(line.getOptionValue("filename"));
 			String endpointUrl = line.getOptionValue("endpointUrl");
 			String user = line.getOptionValue("user");
 			String password = line.getOptionValue("password");

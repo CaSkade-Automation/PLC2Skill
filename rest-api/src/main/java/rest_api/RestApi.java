@@ -51,7 +51,7 @@ public class RestApi {
 			logger.info("Uploaded file '" + getFileName(request.raw().getPart("plc-file")) + "' saved as '"
 					+ plcOpenFile + "'");
 			
-			Plc2SkillMapper mapper = new Plc2SkillMapper.Builder(plcOpenFile.toString(), endpointUrl)
+			Plc2SkillMapper mapper = new Plc2SkillMapper.Builder(plcOpenFile.toPath(), endpointUrl)
 					.setUser(user, password)
 					.setNodeIdRoot(nodeIdRoot)
 					.build();

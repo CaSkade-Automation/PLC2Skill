@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -17,8 +17,6 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
-import org.eclipse.milo.opcua.stack.core.UaException;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,13 +41,13 @@ public class Plc2SkillMapper {
 	static String stateMachineTemplateFile = "PLCStateMachine.ttl";
 	static String pattern = "_Replace_";
 
-	String plcOpenFilePath;
-	String endpointUrl;
-	String user;
-	String password;
-	String nodeIdRoot;
+	private Path plcOpenFilePath;
+	private String endpointUrl;
+	private String user;
+	private String password;
+	private String nodeIdRoot;
 	
-	private Plc2SkillMapper(String plcOpenFilePath, String endpointUrl) {
+	private Plc2SkillMapper(Path plcOpenFilePath, String endpointUrl) {
 		this.plcOpenFilePath = plcOpenFilePath;
 		this.endpointUrl = endpointUrl;
 	}
@@ -58,8 +56,8 @@ public class Plc2SkillMapper {
 		
 		Plc2SkillMapper mapper;
 		
-		public Builder(String plcOpenFilePath, String endpointUrl){
-			mapper = new Plc2SkillMapper(plcOpenFilePath, endpointUrl);
+		public Builder(Path plcOpenFilePath, String endpointUrl){
+			mapper = new Plc2SkillMapper(plcOpenFilePath.toAbsolutePath(), endpointUrl);
 		}
 		
 		public Builder setUser(String user, String password) {
@@ -99,6 +97,8 @@ public class Plc2SkillMapper {
 
 		// 4. Combine completed rml mapping result with state machines
 		String mappingResult = completedRmlMappingResult + "\n" + stateMachines;
+		logger.info("Completed mapping");
+		
 		return mappingResult;
 	}
 
@@ -106,15 +106,14 @@ public class Plc2SkillMapper {
 	 * Replaces the ServerIP and PLCIdentifier
 	 */
 	private String completeMappingResult() {
-		String result = "";
+		String resultWithIpPlaceholder = "";
 
 		// If a nodeIdRoot is given by the user, use it
 		if (nodeIdRoot != null) {
 			String stringMappingResult = RmlMapper.convertResultToString(this.rmlMappingResult);
 			String placeholderIdentifier = "PLCIdentifier";
-			String placeholderEndpointURL = "ServerIP";
-			result = stringMappingResult.replaceAll(placeholderIdentifier, this.nodeIdRoot); // Replaces nodeID-Placeholder
-			result = result.replaceAll(placeholderEndpointURL, this.endpointUrl);
+			resultWithIpPlaceholder = stringMappingResult.replaceAll(placeholderIdentifier, this.nodeIdRoot); // Replaces nodeID-Placeholder
+			
 		} else {
 			// Try to browse all variables to resolve the proper nodeID
 			Term predicate = new NamedNode("http://www.hsu-ifa.de/ontologies/OpcUa#nodeId");
@@ -141,8 +140,11 @@ public class Plc2SkillMapper {
 				e.printStackTrace();
 			}
 			
-			result = RmlMapper.convertResultToString(rmlMappingResult);
+			resultWithIpPlaceholder = RmlMapper.convertResultToString(rmlMappingResult);
 		}
+		
+		String placeholderEndpointURL = "ServerIP";
+		String result = resultWithIpPlaceholder.replaceAll(placeholderEndpointURL, this.endpointUrl);
 		return result;
 	}
 	
@@ -154,7 +156,7 @@ public class Plc2SkillMapper {
 	 * @param mtpFilePath mtpFilePath File path of the MTP AML file
 	 * @return A string in turtle syntax containing all state machines for this MTP
 	 */
-	private String createStateMachines(String plcOpenFilePath) {
+	private String createStateMachines(Path plcOpenFilePath) {
 
 		DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
 		domFactory.setNamespaceAware(false);
@@ -164,7 +166,7 @@ public class Plc2SkillMapper {
 		// Open the file
 		try {
 			builder = domFactory.newDocumentBuilder();
-			doc = builder.parse(plcOpenFilePath);
+			doc = builder.parse(plcOpenFilePath.toUri().toString());
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();
 		}
