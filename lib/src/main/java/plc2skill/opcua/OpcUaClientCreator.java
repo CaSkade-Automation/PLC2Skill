@@ -43,7 +43,7 @@ public class OpcUaClientCreator {
         File pkiDir = securityTempDir.resolve("pki").toFile();
 		KeyStoreLoader loader = new KeyStoreLoader().load(securityTempDir);
 
-		DefaultTrustListManager trustListManager = new DefaultTrustListManager(pkiDir);
+		trustListManager = new DefaultTrustListManager(pkiDir);
 
 		DefaultClientCertificateValidator certificateValidator = new DefaultClientCertificateValidator(trustListManager);
 
