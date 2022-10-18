@@ -43,23 +43,59 @@ public class Plc2SkillMapper {
 	static String stateMachineTemplateFile = "PLCStateMachine.ttl";
 	static String pattern = "_Replace_";
 
+	String plcOpenFilePath;
+	String endpointUrl;
+	String user;
+	String password;
+	String nodeIdRoot;
+	
+	private Plc2SkillMapper(String plcOpenFilePath, String endpointUrl) {
+		this.plcOpenFilePath = plcOpenFilePath;
+		this.endpointUrl = endpointUrl;
+	}
+	
+	public static class Builder {
+		
+		Plc2SkillMapper mapper;
+		
+		public Builder(String plcOpenFilePath, String endpointUrl){
+			mapper = new Plc2SkillMapper(plcOpenFilePath, endpointUrl);
+		}
+		
+		public Builder setUser(String user, String password) {
+			mapper.user = user;
+			mapper.password = password;
+			return this;
+		}
+		
+		public Builder setNodeIdRoot(String nodeIdRoot) {
+			mapper.nodeIdRoot = nodeIdRoot;
+			return this;
+		}
+		
+		public Plc2SkillMapper build() {
+			return this.mapper;
+		}
+	}
+	
+	
 	/**
 	 * Maps an MTP file with a given file path to the ontological skill model
 	 * 
 	 * @param mtpFilePath File path of the MTP AML file
 	 * @return Skill ontology in turtle syntax
 	 */
-	public String executeMapping(String plcOpenFilePath, String endpointUrl, String nodeIdRoot) {
+	public String executeMapping() {
 
 		// 1. Execute RML mapping
 		RmlMapper rmlMapper = new RmlMapper();
-		this.rmlMappingResult = rmlMapper.executeRmlMapping(plcOpenFilePath);
+		this.rmlMappingResult = rmlMapper.executeRmlMapping(this.plcOpenFilePath);
 
 		// 2. Add PLC Identifier and EndpointURL of OPC UA Server
-		String completedRmlMappingResult = completeMappingResult(endpointUrl, nodeIdRoot, rmlMappingResult);
+		String completedRmlMappingResult = completeMappingResult();
 
 		// 3. Create state machines for each procedure
-		String stateMachines = createStateMachines(plcOpenFilePath);
+		String stateMachines = createStateMachines(this.plcOpenFilePath);
 
 		// 4. Combine completed rml mapping result with state machines
 		String mappingResult = completedRmlMappingResult + "\n" + stateMachines;
@@ -69,33 +105,23 @@ public class Plc2SkillMapper {
 	/**
 	 * Replaces the ServerIP and PLCIdentifier
 	 */
-	private String completeMappingResult(String endpointUrl, String nodeIdRoot, QuadStore rmlMappingResult) {
+	private String completeMappingResult() {
 		String result = "";
 
 		// If a nodeIdRoot is given by the user, use it
 		if (nodeIdRoot != null) {
-			String stringMappingResult = RmlMapper.convertResultToString(rmlMappingResult);
+			String stringMappingResult = RmlMapper.convertResultToString(this.rmlMappingResult);
 			String placeholderIdentifier = "PLCIdentifier";
 			String placeholderEndpointURL = "ServerIP";
-			result = stringMappingResult.replaceAll(placeholderIdentifier, nodeIdRoot); // Replaces nodeID-Placeholder
-			result = result.replaceAll(placeholderEndpointURL, endpointUrl);
+			result = stringMappingResult.replaceAll(placeholderIdentifier, this.nodeIdRoot); // Replaces nodeID-Placeholder
+			result = result.replaceAll(placeholderEndpointURL, this.endpointUrl);
 		} else {
 			// Try to browse all variables to resolve the proper nodeID
 			Term predicate = new NamedNode("http://www.hsu-ifa.de/ontologies/OpcUa#nodeId");
 
 			List<Quad> sourceQuads = rmlMappingResult.getQuads(null, predicate, null);
-			OpcUaClient client = null;
 			try {
-				client = OpcUaClient.create(endpointUrl);
-				client.connect().get();
-			} catch (UaException | InterruptedException | ExecutionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			OpcUaBrowser browser = null;
-			try {
-				browser = new OpcUaBrowser(endpointUrl);
+				OpcUaBrowser browser = new OpcUaBrowser(this.endpointUrl, this.user, this.password);
 				for (Quad quad : sourceQuads) {
 					String nodeIdWithPlaceholder = quad.getObject().getValue();
 					try {
@@ -109,7 +135,7 @@ public class Plc2SkillMapper {
 						}
 					
 					}
-			} catch (UaException | InterruptedException | ExecutionException e) {
+			} catch (Exception e) {
 				logger.error("Error while making a connection to the OPC UA server. Please check your endpointUrl and make sure the server is running.\n"
 						+ "No nodeIdRoot was provided and a connection to the OPC UA could not be made. The mapping result will contain incomplete nodeIds with unreplaced template strings.");
 				e.printStackTrace();
