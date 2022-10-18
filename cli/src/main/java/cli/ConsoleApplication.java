@@ -18,7 +18,6 @@ import plc2skill.mapping.Plc2SkillMapper;
 public class ConsoleApplication {
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
-	Plc2SkillMapper mapping = new Plc2SkillMapper();
 	String outputFilename = "MappingOutput.ttl";
 
 	public void run(String[] args) {
@@ -29,13 +28,20 @@ public class ConsoleApplication {
 			return;
 		}
 		
+		// fileName and endpointUrl are required, rest is optional		
 		if (line.hasOption("filename") && line.hasOption("endpointUrl")) {
 			logger.info("Started PLC-Code Mapping to Skills");
-			String path = line.getOptionValue("filename");
+			String plcOpenPath = line.getOptionValue("filename");
 			String endpointUrl = line.getOptionValue("endpointUrl");
+			String user = line.getOptionValue("user");
+			String password = line.getOptionValue("password");
 			String nodeIdRoot = line.getOptionValue("nodeIdRoot");
-			logger.info("fileName: " + path + "\nendpointUrl: " + endpointUrl + "\nnodeIdRoot: " + nodeIdRoot);
-			String result = mapping.executeMapping(path, endpointUrl, nodeIdRoot);
+			logger.info("fileName: " + plcOpenPath + "\nendpointUrl: " + endpointUrl + "\nnodeIdRoot: " + nodeIdRoot);
+			Plc2SkillMapper mapper = new Plc2SkillMapper.Builder(plcOpenPath, endpointUrl)
+													.setUser(user, password)
+													.setNodeIdRoot(nodeIdRoot)
+													.build();
+			String result = mapper.executeMapping();
 			writeFile(result, outputFilename);
 		} else {
 			logger.error("Missing one or both mandatory parameters -f and -e...");
@@ -64,8 +70,10 @@ public class ConsoleApplication {
 		Options options = new Options();
 		options.addOption("h", "help", false, "Print help");
 		options.addRequiredOption("f", "filename", true, "File name of the PLCopen XML file that should be mapped");
-		options.addRequiredOption("e", "endpointUrl", true, "EndpointUrl of this skills UA Server");
-		options.addOption("n", "nodeIdRoot", true, "Root component of this UA Server's node IDs");
+		options.addRequiredOption("e", "endpointUrl", true, "EndpointUrl of this skills OPC UA Server");
+		options.addOption("u", "user", true, "Username of the OPC UA Server");
+		options.addOption("p", "password", true, "Password of the OPC UA Server");
+		options.addOption("n", "nodeIdRoot", true, "Root component of this OPC UA Server's node IDs");
 
 		return options;
 	}
