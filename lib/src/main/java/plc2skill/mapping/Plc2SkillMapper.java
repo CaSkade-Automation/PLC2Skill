@@ -36,10 +36,13 @@ import plc2skill.opcua.OpcUaBrowser;
 public class Plc2SkillMapper {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
+	
+	private final String placeholderIdentifier = "__NodeIdRootComponent__";
+	private final String placeholderEndpointURL = "__ServerEndpointUrl__";
 
 	private QuadStore rmlMappingResult;
 	static String stateMachineTemplateFile = "PLCStateMachine.ttl";
-	static String pattern = "_Replace_";
+	static String pattern = "__SkillNamePlaceholder__";
 
 	private Path plcOpenFilePath;
 	private String endpointUrl;
@@ -111,7 +114,6 @@ public class Plc2SkillMapper {
 		// If a nodeIdRoot is given by the user, use it
 		if (nodeIdRoot != null) {
 			String stringMappingResult = RmlMapper.convertResultToString(this.rmlMappingResult);
-			String placeholderIdentifier = "PLCIdentifier";
 			resultWithIpPlaceholder = stringMappingResult.replaceAll(placeholderIdentifier, this.nodeIdRoot); // Replaces nodeID-Placeholder
 			
 		} else {
@@ -135,15 +137,14 @@ public class Plc2SkillMapper {
 					
 					}
 			} catch (Exception e) {
-				logger.error("Error while making a connection to the OPC UA server. Please check your endpointUrl and make sure the server is running.\n"
-						+ "No nodeIdRoot was provided and a connection to the OPC UA could not be made. The mapping result will contain incomplete nodeIds with unreplaced template strings.");
+				logger.error("Error while making a connection to the OPC UA server. Please check your endpointUrl and make sure the server is running.");
+				logger.error("No nodeIdRoot was provided and a connection to the OPC UA could not be made. The mapping result will contain incomplete nodeIds with unreplaced template strings.");
 				e.printStackTrace();
 			}
 			
 			resultWithIpPlaceholder = RmlMapper.convertResultToString(rmlMappingResult);
 		}
 		
-		String placeholderEndpointURL = "ServerIP";
 		String result = resultWithIpPlaceholder.replaceAll(placeholderEndpointURL, this.endpointUrl);
 		return result;
 	}
@@ -195,8 +196,8 @@ public class Plc2SkillMapper {
 		// For every procedureNode: Create a customized state machine by replacing the placeholder and add it to the total stateMachin string
 		String mappedStateMachines = "";
 		for (int i = 0; i < procedureNodes.getLength(); i++) {
-			String nodeName = procedureNodes.item(i).getAttributes().getNamedItem("name").getNodeValue();
-			String stateMachine = stateMachineTemplate.replaceAll(pattern, nodeName);
+			String skillName = procedureNodes.item(i).getAttributes().getNamedItem("name").getNodeValue();
+			String stateMachine = stateMachineTemplate.replaceAll(pattern, skillName);
 			mappedStateMachines += stateMachine;
 		}
 

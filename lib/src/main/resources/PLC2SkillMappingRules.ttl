@@ -24,7 +24,7 @@
         rr:predicateObjectMap[
         rr:predicate OPCUA:nodeId;
         rr:objectMap[
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}";
+            rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}";
             rr:datatype xsd:string;
         ]
     ];
@@ -78,7 +78,7 @@
         rr:predicateObjectMap [
         rr:predicate OPCUA:nodeId;
         rr:objectMap [
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}.value";
+            rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}.value";
             rr:datatype xsd:string; 
                 ]
         ];
@@ -132,7 +132,7 @@
         rr:predicateObjectMap [
         rr:predicate OPCUA:nodeId;
         rr:objectMap [
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}.value";
+            rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}.value";
             rr:datatype xsd:string; 
                 ]
         ];
@@ -214,7 +214,7 @@
         rr:predicateObjectMap [
         rr:predicate OPCUA:nodeId;
         rr:objectMap [
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.currentState";
+            rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.currentState";
             rr:datatype xsd:string; 
                 ]
         ];
@@ -1119,7 +1119,7 @@
         rr:predicateObjectMap[
         rr:predicate OPCUA:nodeId;
         rr:objectMap[
-            rr:template "PLCIdentifier.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.transition";
+            rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.transition";
             rr:datatype xsd:string
         ]
         
@@ -1619,7 +1619,7 @@
 	rr:predicateObjectMap [
     rr:predicate OPCUA:hasEndpointUrl;
     rr:objectMap [   
-	rr:template "ServerIP";
+	rr:template "__ServerEndpointUrl__";
 	rr:datatype xsd:string
 ]];	
 		rr:predicateObjectMap [
