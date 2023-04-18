@@ -5,9 +5,11 @@
 	<parent>
 		<groupId>de.hsu-hh.ifa.plc2skill</groupId>
 		<artifactId>parent</artifactId>
-		<version>0.1.0</version>
+		<version>${revision}</version>
 	</parent>
+	
 	<artifactId>plc2skill-rest-api</artifactId>
+	<name>PLC2Skill REST API</name>
 	
 	<dependencies>
 		<dependency>
@@ -32,26 +34,42 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
 				<groupId>org.apache.maven.plugins</groupId>
-				<version>3.3.0</version>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.2.4</version>
+				<configuration>
+					<filters>
+						<filter>
+							<artifact>*:*</artifact>
+							<excludes>
+								<exclude>META-INF/*.SF</exclude>
+								<exclude>META-INF/*.DSA</exclude>
+								<exclude>META-INF/*.RSA</exclude>
+							</excludes>
+						</filter>
+					</filters>
+				</configuration>
 				<executions>
 					<execution>
-						<id>make-executable-jar-with-dependencies</id>
 						<phase>package</phase>
 						<goals>
-							<goal>single</goal>
+							<goal>shade</goal>
 						</goals>
 						<configuration>
-							<archive>
-								<manifest>
-									<addClasspath>true</addClasspath>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 									<mainClass>rest_api.RestApi</mainClass>
-								</manifest>
-							</archive>
-							<descriptorRefs>
-								<descriptorRef>jar-with-dependencies</descriptorRef>
-							</descriptorRefs>
+								</transformer>
+							</transformers>
+							<artifactSet>
+								<excludes>
+									<exclude>org.apache.jena:jena-tdb2</exclude>
+									<exclude>junit:junit</exclude>
+								</excludes>
+							</artifactSet>
 						</configuration>
 					</execution>
 				</executions>

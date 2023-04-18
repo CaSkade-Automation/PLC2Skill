@@ -2,17 +2,51 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>de.hsu-hh.ifa.plc2skill</groupId>
 	<artifactId>parent</artifactId>
-	<version>0.1.0</version>
-	
+	<version>${revision}</version>
+
+	<properties>
+		<revision>2.0.0</revision>
+	</properties>
+
+
 	<packaging>pom</packaging>
-	
+
 	<modules>
 		<module>lib</module>
 		<module>cli</module>
 		<module>rest-api</module>
 	</modules>
-	
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+				<version>1.4.1</version>
+				<configuration>
+					<updatePomFile>true</updatePomFile>
+				</configuration>
+				<executions>
+					<execution>
+						<id>flatten</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>flatten</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>flatten.clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
