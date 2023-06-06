@@ -29,13 +29,20 @@ public class RestApi {
 		staticFiles.externalLocation("upload");
 		
 		
+		// Setup a simple ping route. Could in the future return some API info
+		get("/ping", (request, response) -> {
+			response.status(200);
+			return "";
+		});
+		
 		// Setup a post route at base path
 		post("/", (request, response) -> {
 			request.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/temp"));
-			
 			String endpointUrl = request.raw().getParameter("endpointUrl");
 			String user = request.raw().getParameter("user");
 			String password = request.raw().getParameter("password");
+			String resourceIri = request.raw().getParameter("resourceIri");
+			String baseIri = request.raw().getParameter("baseIri");
 			String nodeIdRoot = request.raw().getParameter("nodeIdRoot");
 			Part uploadedFileObject = request.raw().getPart("plc-file");
 			
@@ -54,6 +61,8 @@ public class RestApi {
 			Plc2SkillMapper mapper = new Plc2SkillMapper.Builder(plcOpenFile.toPath(), endpointUrl)
 					.setUser(user, password)
 					.setNodeIdRoot(nodeIdRoot)
+					.setBaseIri(baseIri)
+					.setResourceIri(resourceIri)
 					.build();
 			String mappingResult = mapper.executeMapping();
 
