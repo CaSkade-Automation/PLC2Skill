@@ -14,14 +14,19 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>de.hsu-hh.ifa.plc2skill</groupId>
+			<artifactId>plc2skill-lib</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>info.picocli</groupId>
 			<artifactId>picocli</artifactId>
 			<version>4.7.1</version>
 		</dependency>
 		<dependency>
-			<groupId>de.hsu-hh.ifa.plc2skill</groupId>
-			<artifactId>plc2skill-lib</artifactId>
-			<version>${project.version}</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>2.0.7</version>
 		</dependency>
 	</dependencies>
 	<build>

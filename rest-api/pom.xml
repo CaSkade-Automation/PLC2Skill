@@ -67,6 +67,9 @@
 							<artifactSet>
 								<excludes>
 									<exclude>org.apache.jena:jena-tdb2</exclude>
+									<exclude>jakarta.activation:jakarta.activation-api</exclude>
+									<exclude>jaxp-api:jaxp-api</exclude> 
+									<exclude>xml-apis:xml-apis</exclude>
 									<exclude>junit:junit</exclude>
 								</excludes>
 							</artifactSet>
