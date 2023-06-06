@@ -12,6 +12,27 @@
 @prefix : <http://www.hsu-hht.de/aut/PLC2Skill#>.
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 
+# Definition of capabilities and connection to skill
+ :CapabilityDefinition a rr:TriplesMap;
+    rml:logicalSource[
+        rml:source "${XMLFileToMap}";
+        rml:referenceFormulation ql:XPath;
+        rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
+    ];
+
+    rr:subjectMap [
+        rr:template "#{@name}_Capability";
+        rr:class CaSk:ProvidedCapability;
+    ];
+	
+    rr:predicateObjectMap[
+        rr:predicate CSS:isRealizedBySkill;
+        rr:objectMap[
+            rr:template "#{@name}";
+            rr:class CaSkMan:PlcSkill;
+        ]
+    ].
+
 # Definition of PLC-Skills
  :SkillDefinition a rr:TriplesMap;
     rml:logicalSource[
@@ -21,21 +42,21 @@
     ];
 
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}";
+        rr:template "#{@name}";
         rr:class CaSkMan:PlcSkill;
     ];
 	
 	rr:predicateObjectMap[
         rr:predicate CaSkMan:accessibleThroughOpcUaVariableInterface;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}_Interface";
-            rr:datatype xsd:string;
+            rr:template "#{@name}_Interface";
+            rr:clas CaSkMan:OpcUaVariableSkillInterface;
         ]
     ];
     rr:predicateObjectMap[
         rr:predicate CaSk:hasCurrentState;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}_StateMachine_Idle";
+            rr:template "#{@name}_StateMachine_Idle";
             rr:class ISA88:Idle;
         ]
     ].
@@ -49,14 +70,14 @@
 	];
 
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}_Interface";
+        rr:template "#{@name}_Interface";
         rr:class CaSkMan:OpcUaVariableSkillInterface;
     ];
 	
 	rr:predicateObjectMap[
         rr:predicate OPCUA:nodeId;
         rr:objectMap[
-            rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}";
+            rr:template "__NodeIdRootComponent__.{./ancestor::resource/task/pouInstance/@name}.{@name}";
             rr:datatype xsd:string;
         ]
     ];
@@ -64,7 +85,7 @@
 	rr:predicateObjectMap [
         rr:predicate CaSk:exposesSkillParameter, OPCUA:organizes;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}_SkillParameter_{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
+            rr:template "#{@name}_SkillParameter_{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
             rr:class OPCUA:UAVariable, CSS:SkillParameter;
 		]
 	];
@@ -73,7 +94,7 @@
 	rr:predicateObjectMap[
         rr:predicate CaSk:exposesStateMachine;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine";
+            rr:template "#{@name}_StateMachine";
             rr:class ISA88:StateMachine
         ]
     ];
@@ -82,7 +103,7 @@
 	rr:predicateObjectMap[
         rr:predicate OPCUA:organizes;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput";
+            rr:template "#{@name}_CurrentStateOutput";
             rr:class OPCUA:UAVariable, DINEN61360:Instance_Description
         ]
     ];
@@ -90,7 +111,7 @@
     rr:predicateObjectMap [
         rr:predicate CaSk:exposesSkillParameter, OPCUA:organizes;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}_SkillOutput_{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
+            rr:template "#{@name}_SkillOutput_{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
             rr:class OPCUA:UAVariable, CaSk:SkillOutput; 
 		]
     ].
@@ -104,14 +125,14 @@
 		];
 		
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}";
+        rr:template "#{@name}";
         rr:class CaSkMan:PlcSkill;
     ];
     
 	rr:predicateObjectMap [
 	rr:predicate CSS:hasParameter;
 	rr:objectMap [
-		rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}_SkillParameter_{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
+		rr:template "#{@name}_SkillParameter_{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
 		rr:class CSS:SkillParameter;
 			]
 	];
@@ -119,7 +140,7 @@
 	rr:predicateObjectMap [
 	rr:predicate CaSk:hasSkillOutput;
 	rr:objectMap [
-		rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}_SkillOutput_{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
+		rr:template "#{@name}_SkillOutput_{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
 		rr:class CaSk:SkillOutput; 
 			]
 	].
@@ -134,41 +155,41 @@
 		];
 		
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}_SkillParameter_{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
+        rr:template "#{@name}_SkillParameter_{let $skillName:=./type/derived/@name return //configurations/configuration/resource/addData/data/pou[@name=$skillName]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
         rr:class CSS:SkillParameter, OPCUA:UAVariable;
     ];
 	rr:predicateObjectMap [
 	rr:predicate OPCUA:nodeId;
 	rr:objectMap [
-		rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}.value";
+		rr:template "__NodeIdRootComponent__.{./ancestor::resource/task/pouInstance/@name}.{@name}.{let $skillName:=./type/derived/@name return //configurations/configuration/resource/addData/data/pou[@name=$skillName]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}.value";
 		rr:datatype xsd:string; 
 			]
 	];
 	rr:predicateObjectMap [
 	rr:predicate CaSk:hasDefaultValue; 
 	rr:objectMap [
-		rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='default']/simpleValue/@value}";
+		rr:template "{let $skillName:=./type/derived/@name return //configurations/configuration/resource/addData/data/pou[@name=$skillName]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='default']/simpleValue/@value}";
 		rr:datatype xsd:string; 
 			]
 	];
 	rr:predicateObjectMap [
 	rr:predicate CaSk:hasVariableName; 
 	rr:objectMap [
-		rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='name']/simpleValue/@value}";
+		rr:template "{let $skillName:=./type/derived/@name return //configurations/configuration/resource/addData/data/pou[@name=$skillName]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='name']/simpleValue/@value}";
 		rr:datatype xsd:string; 
 			]
 	];
 	rr:predicateObjectMap [
 	rr:predicate CaSk:hasVariableType; 
 	rr:objectMap [
-		rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='paramType']/simpleValue/@value}";
+		rr:template "{let $skillName:=./type/derived/@name return //configurations/configuration/resource/addData/data/pou[@name=$skillName]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='paramType']/simpleValue/@value}";
 		rr:datatype xsd:string; 
 			]
 	];
 	rr:predicateObjectMap [
 	rr:predicate CaSk:isRequired; 
 	rr:objectMap [
-		rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='required']/simpleValue/@value}";
+		rr:template "{let $skillName:=./type/derived/@name return //configurations/configuration/resource/addData/data/pou[@name=$skillName]/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='required']/simpleValue/@value}";
 		rr:datatype xsd:boolean; 
 			]
 	].
@@ -182,42 +203,42 @@
 	];
 			
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}_SkillOutput_{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
+        rr:template "#{@name}_SkillOutput_{let $skillName:=./type/derived/@name return //configurations/configuration/resource/addData/data/pou[@name=$skillName]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
         rr:class CaSk:SkillOutput, OPCUA:UAVariable;
     ];
 	
 	rr:predicateObjectMap [
 	rr:predicate OPCUA:nodeId;
 	rr:objectMap [
-		rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}.value";
+		rr:template "__NodeIdRootComponent__.{./ancestor::resource/task/pouInstance/@name}.{@name}.{let $skillName:=./type/derived/@name return //configurations/configuration/resource/addData/data/pou[@name=$skillName]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}.value";
 		rr:datatype xsd:string; 
 			]
 	];
 	rr:predicateObjectMap [
 	rr:predicate CaSk:hasDefaultValue; 
 	rr:objectMap [
-		rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='default']/simpleValue/@value}";
+		rr:template "{let $skillName:=./type/derived/@name return //configurations/configuration/resource/addData/data/pou[@name=$skillName]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='default']/simpleValue/@value}";
 		rr:datatype xsd:string; 
 			]
 	];
 	rr:predicateObjectMap [
 	rr:predicate CaSk:hasVariableName; 
 	rr:objectMap [
-		rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='name']/simpleValue/@value}";
+		rr:template "{let $skillName:=./type/derived/@name return //configurations/configuration/resource/addData/data/pou[@name=$skillName]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='name']/simpleValue/@value}";
 		rr:datatype xsd:string; 
 			]
 	];
 	rr:predicateObjectMap [
 	rr:predicate CaSk:hasVariableType; 
 	rr:objectMap [
-		rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='paramType']/simpleValue/@value}";
+		rr:template "{let $skillName:=./type/derived/@name return //configuration/resource/addData/data/pou[@name=$skillName]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='paramType']/simpleValue/@value}";
 		rr:datatype xsd:string; 
 			]
 	];
 	rr:predicateObjectMap [
 	rr:predicate CaSk:isRequired; 
 	rr:objectMap [
-		rr:template "{./ancestor::instances/configurations/configuration/resource/addData/data/pou[@name=./type/derived/@name]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='required']/simpleValue/@value}";
+		rr:template "{let $skillName:=./type/derived/@name return //configurations/configuration/resource/addData/data/pou[@name=$skillName]/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/initialValue/structValue/value[@member='required']/simpleValue/@value}";
 		rr:datatype xsd:boolean; 
 			]
 	].
@@ -230,21 +251,21 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}";
+        rr:template "#{@name}";
         rr:class CaSkMan:PlcSkill;
     ];
 
 	rr:predicateObjectMap[
         rr:predicate CSS:behaviorConformsTo;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine";
+            rr:template "#{@name}_StateMachine";
             rr:class ISA88:StateMachine
         ]
     ];
         rr:predicateObjectMap[
         rr:predicate CaSk:hasCurrentStateOutput;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput";
+            rr:template "#{@name}_CurrentStateOutput";
             rr:class CaSk:CurrentStateOutput
         ]
     ].
@@ -257,14 +278,14 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput";
+        rr:template "#{@name}_CurrentStateOutput";
         rr:class CaSk:CurrentStateOutput, OPCUA:UAVariable, DINEN61360:Instance_Description ;
     ];
 	
 	rr:predicateObjectMap [
 		rr:predicate OPCUA:nodeId;
 		rr:objectMap [
-			rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.currentState";
+			rr:template "__NodeIdRootComponent__.{./ancestor::resource/task/pouInstance/@name}.{@name}.currentState";	# Node ID defined by the current FB
 			rr:datatype xsd:string; 
 			]
 		];
@@ -280,7 +301,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Idle_DE";
+			rr:template "#{@name}_CurrentStateOutput_Idle_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -288,7 +309,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Starting_DE";
+			rr:template "#{@name}_CurrentStateOutput_Starting_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -296,7 +317,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Execute_DE";
+			rr:template "#{@name}_CurrentStateOutput_Execute_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -304,7 +325,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Holding_DE";
+			rr:template "#{@name}_CurrentStateOutput_Holding_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -312,7 +333,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Unholding_DE";
+			rr:template "#{@name}_CurrentStateOutput_Unholding_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -320,7 +341,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Held_DE";
+			rr:template "#{@name}_CurrentStateOutput_Held_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -328,7 +349,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Completing_DE";
+			rr:template "#{@name}_CurrentStateOutput_Completing_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -336,7 +357,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Complete_DE";
+			rr:template "#{@name}_CurrentStateOutput_Complete_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -344,7 +365,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Aborting_DE";
+			rr:template "#{@name}_CurrentStateOutput_Aborting_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -352,7 +373,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Aborted_DE";
+			rr:template "#{@name}_CurrentStateOutput_Aborted_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -360,7 +381,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Clearing_DE";
+			rr:template "#{@name}_CurrentStateOutput_Clearing_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -368,7 +389,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Stopping_DE";
+			rr:template "#{@name}_CurrentStateOutput_Stopping_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -376,7 +397,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Stopped_DE";
+			rr:template "#{@name}_CurrentStateOutput_Stopped_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -384,7 +405,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Resetting_DE";
+			rr:template "#{@name}_CurrentStateOutput_Resetting_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -392,7 +413,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Suspending_DE";
+			rr:template "#{@name}_CurrentStateOutput_Suspending_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -400,7 +421,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Suspended_DE";
+			rr:template "#{@name}_CurrentStateOutput_Suspended_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		];
@@ -408,7 +429,7 @@
 	rr:predicateObjectMap [
 		rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
 		rr:objectMap [
-			rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Unsuspending_DE";
+			rr:template "#{@name}_CurrentStateOutput_Unsuspending_DE";
 			rr:class DINEN61360:Data_Element; 
 			]
 		].
@@ -421,13 +442,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Idle";
+        rr:template "#{@name}_StateMachine_Idle";
         rr:class ISA88:Idle;
     ]; 
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Idle_DE";
+            rr:template "#{@name}_CurrentStateOutput_Idle_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -438,13 +459,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Starting";
+        rr:template "#{@name}_StateMachine_Starting";
         rr:class ISA88:Starting;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Starting_DE";
+            rr:template "#{@name}_CurrentStateOutput_Starting_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -456,13 +477,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Execute";
+        rr:template "#{@name}_StateMachine_Execute";
         rr:class ISA88:Execute;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Execute_DE";
+            rr:template "#{@name}_CurrentStateOutput_Execute_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -474,13 +495,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Completing";
+        rr:template "#{@name}_StateMachine_Completing";
         rr:class ISA88:Completing;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Completing_DE";
+            rr:template "#{@name}_CurrentStateOutput_Completing_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -491,13 +512,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Complete";
+        rr:template "#{@name}_StateMachine_Complete";
         rr:class ISA88:Complete;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Complete_DE";
+            rr:template "#{@name}_CurrentStateOutput_Complete_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -509,13 +530,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Resetting";
+        rr:template "#{@name}_StateMachine_Resetting";
         rr:class ISA88:Resetting;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Resetting_DE";
+            rr:template "#{@name}_CurrentStateOutput_Resetting_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -526,13 +547,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Holding";
+        rr:template "#{@name}_StateMachine_Holding";
         rr:class ISA88:Holding;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Holding_DE";
+            rr:template "#{@name}_CurrentStateOutput_Holding_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -543,13 +564,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Held";
+        rr:template "#{@name}_StateMachine_Held";
         rr:class ISA88:Held;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Held_DE";
+            rr:template "#{@name}_CurrentStateOutput_Held_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -560,13 +581,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Unholding";
+        rr:template "#{@name}_StateMachine_Unholding";
         rr:class ISA88:Unholding;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Unholding_DE";
+            rr:template "#{@name}_CurrentStateOutput_Unholding_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -577,13 +598,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Suspending";
+        rr:template "#{@name}_StateMachine_Suspending";
         rr:class ISA88:Suspending;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Suspending_DE";
+            rr:template "#{@name}_CurrentStateOutput_Suspending_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -594,13 +615,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Suspended";
+        rr:template "#{@name}_StateMachine_Suspended";
         rr:class ISA88:Suspended;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Suspended_DE";
+            rr:template "#{@name}_CurrentStateOutput_Suspended_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -611,13 +632,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Unsuspending";
+        rr:template "#{@name}_StateMachine_Unsuspending";
         rr:class ISA88:Unsuspending;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Unsuspending_DE";
+            rr:template "#{@name}_CurrentStateOutput_Unsuspending_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -628,13 +649,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Stopping";
+        rr:template "#{@name}_StateMachine_Stopping";
         rr:class ISA88:Stopping;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Stopping_DE";
+            rr:template "#{@name}_CurrentStateOutput_Stopping_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -646,13 +667,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Stopped";
+        rr:template "#{@name}_StateMachine_Stopped";
         rr:class ISA88:Stopped;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Stopped_DE";
+            rr:template "#{@name}_CurrentStateOutput_Stopped_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -664,13 +685,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Aborting";
+        rr:template "#{@name}_StateMachine_Aborting";
         rr:class ISA88:Aborting;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Aborting_DE";
+            rr:template "#{@name}_CurrentStateOutput_Aborting_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -682,13 +703,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Aborted";
+        rr:template "#{@name}_StateMachine_Aborted";
         rr:class ISA88:Aborted;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Aborted_DE";
+            rr:template "#{@name}_CurrentStateOutput_Aborted_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].
@@ -699,13 +720,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Clearing";
+        rr:template "#{@name}_StateMachine_Clearing";
         rr:class ISA88:Clearing;
     ];
         rr:predicateObjectMap [
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap [
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Clearing_DE";
+            rr:template "#{@name}_CurrentStateOutput_Clearing_DE";
             rr:class DINEN61360:Data_Element; 
                 ]
         ].      
@@ -718,7 +739,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Idle_DE";
+        rr:template "#{@name}_CurrentStateOutput_Idle_DE";
         rr:class DINEN61360:Data_Element;
     ];
      rr:predicateObjectMap [
@@ -746,7 +767,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Starting_DE";
+        rr:template "#{@name}_CurrentStateOutput_Starting_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -772,7 +793,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Execute_DE";
+        rr:template "#{@name}_CurrentStateOutput_Execute_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -798,7 +819,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Holding_DE";
+        rr:template "#{@name}_CurrentStateOutput_Holding_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -824,7 +845,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Held_DE";
+        rr:template "#{@name}_CurrentStateOutput_Held_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -850,7 +871,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Unholding_DE";
+        rr:template "#{@name}_CurrentStateOutput_Unholding_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -876,7 +897,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Suspending_DE";
+        rr:template "#{@name}_CurrentStateOutput_Suspending_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -902,7 +923,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Suspended_DE";
+        rr:template "#{@name}_CurrentStateOutput_Suspended_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -928,7 +949,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Unsuspending_DE";
+        rr:template "#{@name}_CurrentStateOutput_Unsuspending_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -954,7 +975,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Completing_DE";
+        rr:template "#{@name}_CurrentStateOutput_Completing_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -980,7 +1001,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Complete_DE";
+        rr:template "#{@name}_CurrentStateOutput_Complete_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -1006,7 +1027,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Resetting_DE";
+        rr:template "#{@name}_CurrentStateOutput_Resetting_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -1032,7 +1053,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Aborting_DE";
+        rr:template "#{@name}_CurrentStateOutput_Aborting_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -1058,7 +1079,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Aborted_DE";
+        rr:template "#{@name}_CurrentStateOutput_Aborted_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -1084,7 +1105,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Clearing_DE";
+        rr:template "#{@name}_CurrentStateOutput_Clearing_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -1110,7 +1131,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Stopping_DE";
+        rr:template "#{@name}_CurrentStateOutput_Stopping_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -1136,7 +1157,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput_Stopped_DE";
+        rr:template "#{@name}_CurrentStateOutput_Stopped_DE";
         rr:class DINEN61360:Data_Element;
     ];
     rr:predicateObjectMap [
@@ -1162,14 +1183,14 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}";
+        rr:template "#{@name}";
         rr:class CaSkMan:PlcSkill;
     ];
 
         rr:predicateObjectMap[
         rr:predicate CaSk:hasSkillCommand;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_SkillCommand";
+            rr:template "#{@name}_SkillCommand";
             rr:class CaSk:SkillCommand, DINEN61360:Instance_Description;
         ]
     ].
@@ -1182,14 +1203,14 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}_Interface";
+        rr:template "#{@name}_Interface";
         rr:class CaSkMan:OpcUaVariableSkillInterface;
     ];
 
         rr:predicateObjectMap[
         rr:predicate CaSk:exposesSkillParameter, OPCUA:organizes;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_SkillCommand";
+            rr:template "#{@name}_SkillCommand";
             rr:class CaSk:SkillCommand, OPCUA:UAVariable, DINEN61360:Instance_Description;
         ]
     ].
@@ -1202,13 +1223,13 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_SkillCommand";
+        rr:template "#{@name}_SkillCommand";
         rr:class CaSk:SkillCommand, OPCUA:UAVariable, DINEN61360:Instance_Description;
     ];
         rr:predicateObjectMap[
         rr:predicate OPCUA:nodeId;
         rr:objectMap[
-            rr:template "__NodeIdRootComponent__.{./ancestor::resource/@name}.{./ancestor::resource/task/pouInstance/@name}.{@name}.transition";
+            rr:template "__NodeIdRootComponent__.{./ancestor::resource/task/pouInstance/@name}.{@name}.transition";	# Node ID defined by the current FB
             rr:datatype xsd:string
         ]
         
@@ -1224,36 +1245,14 @@
     rr:predicateObjectMap[
         rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StartCommand_DE";
+            rr:template "#{@name}_StartCommand_DE";
             rr:class DINEN61360:Data_Element
         ]
     ];
         rr:predicateObjectMap[
         rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_HoldCommand_DE";
-            rr:class DINEN61360:Data_Element
-        ]
-    ];
-    
-        rr:predicateObjectMap[
-        rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
-        rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_UnholdCommand_DE";
-            rr:class DINEN61360:Data_Element
-        ]
-    ];
-        rr:predicateObjectMap[
-        rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
-        rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_SuspendCommand_DE";
-            rr:class DINEN61360:Data_Element
-        ]
-    ];
-        rr:predicateObjectMap[
-        rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
-        rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_UnsuspendCommand_DE";
+            rr:template "#{@name}_HoldCommand_DE";
             rr:class DINEN61360:Data_Element
         ]
     ];
@@ -1261,7 +1260,21 @@
         rr:predicateObjectMap[
         rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_ResetCommand_DE";
+            rr:template "#{@name}_UnholdCommand_DE";
+            rr:class DINEN61360:Data_Element
+        ]
+    ];
+        rr:predicateObjectMap[
+        rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
+        rr:objectMap[
+            rr:template "#{@name}_SuspendCommand_DE";
+            rr:class DINEN61360:Data_Element
+        ]
+    ];
+        rr:predicateObjectMap[
+        rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
+        rr:objectMap[
+            rr:template "#{@name}_UnsuspendCommand_DE";
             rr:class DINEN61360:Data_Element
         ]
     ];
@@ -1269,7 +1282,7 @@
         rr:predicateObjectMap[
         rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StopCommand_DE";
+            rr:template "#{@name}_ResetCommand_DE";
             rr:class DINEN61360:Data_Element
         ]
     ];
@@ -1277,7 +1290,7 @@
         rr:predicateObjectMap[
         rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_AbortCommand_DE";
+            rr:template "#{@name}_StopCommand_DE";
             rr:class DINEN61360:Data_Element
         ]
     ];
@@ -1285,7 +1298,15 @@
         rr:predicateObjectMap[
         rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_ClearCommand_DE";
+            rr:template "#{@name}_AbortCommand_DE";
+            rr:class DINEN61360:Data_Element
+        ]
+    ];
+    
+        rr:predicateObjectMap[
+        rr:predicate DINEN61360:is_Instance_Description_of_Data_Element;
+        rr:objectMap[
+            rr:template "#{@name}_ClearCommand_DE";
             rr:class DINEN61360:Data_Element
         ]
     ].
@@ -1299,7 +1320,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StartCommand_DE";
+        rr:template "#{@name}_StartCommand_DE";
         rr:class OPCUA:UAVariable;
     ];
     rr:predicateObjectMap[
@@ -1324,7 +1345,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_HoldCommand_DE";
+        rr:template "#{@name}_HoldCommand_DE";
         rr:class OPCUA:UAVariable;
     ];
       rr:predicateObjectMap[
@@ -1349,7 +1370,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_UnholdCommand_DE";
+        rr:template "#{@name}_UnholdCommand_DE";
         rr:class OPCUA:UAVariable;
     ];
       rr:predicateObjectMap[
@@ -1374,7 +1395,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_SuspendCommand_DE";
+        rr:template "#{@name}_SuspendCommand_DE";
         rr:class OPCUA:UAVariable;
     ];
       rr:predicateObjectMap[
@@ -1399,7 +1420,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_UnsuspendCommand_DE";
+        rr:template "#{@name}_UnsuspendCommand_DE";
         rr:class OPCUA:UAVariable;
     ];
     rr:predicateObjectMap[
@@ -1424,7 +1445,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_ResetCommand_DE";
+        rr:template "#{@name}_ResetCommand_DE";
         rr:class OPCUA:UAVariable;
     ];
       rr:predicateObjectMap[
@@ -1449,7 +1470,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_AbortCommand_DE";
+        rr:template "#{@name}_AbortCommand_DE";
         rr:class OPCUA:UAVariable;
     ];
       rr:predicateObjectMap[
@@ -1474,7 +1495,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_ClearCommand_DE";
+        rr:template "#{@name}_ClearCommand_DE";
         rr:class OPCUA:UAVariable;
     ];
       rr:predicateObjectMap[
@@ -1499,7 +1520,7 @@
         rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"
             ];
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StopCommand_DE";
+        rr:template "#{@name}_StopCommand_DE";
         rr:class OPCUA:UAVariable;
     ];
       rr:predicateObjectMap[
@@ -1526,13 +1547,13 @@
             ];
 
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Start_Command";
+        rr:template "#{@name}_StateMachine_StartCommand";
         rr:class ISA88:StartCommand;
     ];
         rr:predicateObjectMap[
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StartCommand_DE";
+            rr:template "#{@name}_StartCommand_DE";
             rr:class DINEN61360:Data_Element;
         ]
     ].
@@ -1544,13 +1565,13 @@
             ];
 
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Reset_Command";
+        rr:template "#{@name}_StateMachine_ResetCommand";
         rr:class ISA88:ResetCommand;
     ];
         rr:predicateObjectMap[
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_ResetCommand_DE";
+            rr:template "#{@name}_ResetCommand_DE";
             rr:class DINEN61360:Data_Element;
         ]
     ].
@@ -1562,13 +1583,13 @@
             ];
 
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Hold_Command";
+        rr:template "#{@name}_StateMachine_HoldCommand";
         rr:class ISA88:HoldCommand;
     ];
     rr:predicateObjectMap[
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_HoldCommand_DE";
+            rr:template "#{@name}_HoldCommand_DE";
             rr:class DINEN61360:Data_Element;
         ]
     ].
@@ -1581,13 +1602,13 @@
             ];
 
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Unhold_Command";
+        rr:template "#{@name}_StateMachine_UnholdCommand";
         rr:class ISA88:UnholdCommand;
     ];
     rr:predicateObjectMap[
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_UnholdCommand_DE";
+            rr:template "#{@name}_UnholdCommand_DE";
             rr:class DINEN61360:Data_Element;
         ]
     ].
@@ -1600,13 +1621,13 @@
             ];
 
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Suspend_Command";
+        rr:template "#{@name}_StateMachine_SuspendCommand";
         rr:class ISA88:SuspendCommand;
     ];
         rr:predicateObjectMap[
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_SuspendCommand_DE";
+            rr:template "#{@name}_SuspendCommand_DE";
             rr:class DINEN61360:Data_Element;
         ]
     ].
@@ -1619,13 +1640,13 @@
             ];
 
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Un-Suspend_Command";
+        rr:template "#{@name}_StateMachine_UnsuspendCommand";
         rr:class ISA88:UnsuspendCommand;
     ];
         rr:predicateObjectMap[
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_UnsuspendCommand_DE";
+            rr:template "#{@name}_UnsuspendCommand_DE";
             rr:class DINEN61360:Data_Element;
         ]
     ].
@@ -1638,13 +1659,13 @@
             ];
 
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Clear_Command";
+        rr:template "#{@name}_StateMachine_ClearCommand";
         rr:class ISA88:ClearCommand;
     ];
         rr:predicateObjectMap[
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_ClearCommand_DE";
+            rr:template "#{@name}_ClearCommand_DE";
             rr:class DINEN61360:Data_Element;
         ]
     ].
@@ -1657,13 +1678,13 @@
             ];
 
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Stop_Command";
+        rr:template "#{@name}_StateMachine_StartCommand";
         rr:class ISA88:StopCommand;
     ];
         rr:predicateObjectMap[
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StopCommand_DE";
+            rr:template "#{@name}_StopCommand_DE";
             rr:class DINEN61360:Data_Element;
         ]
     ].
@@ -1675,13 +1696,13 @@
             ];
 
     rr:subjectMap [
-        rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_StateMachine_Abort_Command";
+        rr:template "#{@name}_StateMachine_AbortCommand";
         rr:class ISA88:AbortCommand;
     ];
         rr:predicateObjectMap[
         rr:predicate DINEN61360:has_Data_Element;
         rr:objectMap[
-            rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_AbortCommand_DE";
+            rr:template "#{@name}_AbortCommand_DE";
             rr:class DINEN61360:Data_Element;
         ]
     ].
@@ -1693,10 +1714,10 @@
 	rml:logicalSource [
 		rml:source "${XMLFileToMap}";
 		rml:referenceFormulation ql:XPath;
-		rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"];
+		rml:iterator "./project/instances/configurations/configuration"];
 
 	rr:subjectMap [
-		rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_OPCUAServer";
+		rr:template "#{@name}_OPCUAServer";
 		rr:class OPCUA:UAServer
 	];	
   
@@ -1704,7 +1725,7 @@
   	rr:predicateObjectMap [
 		rr:predicate OPCUA:hasNodeSet;
 		rr:objectMap [
-		rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_OPCUANodeSet";
+		rr:template "#{@name}_OPCUANodeSet";
 		rr:class OPCUA:UANodeSet
 	]];
 	
@@ -1737,7 +1758,7 @@
 		rml:iterator "./project/instances/configurations/configuration/resource/addData/data/pou/interface/localVars/variable[./type/derived/@name=./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/@name]"];
 
 	rr:subjectMap [
-		rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_OPCUANodeSet";
+		rr:template "#{./ancestor::project/instances/configurations/configuration/@name}_OPCUANodeSet";
 		rr:class OPCUA:UANodeSet
 	];
 
@@ -1745,7 +1766,7 @@
   	rr:predicateObjectMap [
 		rr:predicate OPCUA:containsNode, OPCUA:organizes;
 		rr:objectMap [
-		rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}_Interface";
+		rr:template "#{@name}_Interface";
 		rr:class OPCUA:UAObject
 	]];	
   
@@ -1753,7 +1774,7 @@
   	rr:predicateObjectMap [
 		rr:predicate OPCUA:containsNode, OPCUA:organizes;
 		rr:objectMap [
-		rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}_SkillParameter_{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
+		rr:template "#{@name}_SkillParameter_{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/inputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
 		rr:class OPCUA:UAVariable
 	]];
 
@@ -1761,7 +1782,7 @@
   	rr:predicateObjectMap [
 		rr:predicate OPCUA:containsNode, OPCUA:organizes;
 		rr:objectMap [
-		rr:template "http://www.hsu-hh.de/aut/PLC2Skill/skills#{@name}_SkillOutput_{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
+		rr:template "#{@name}_SkillOutput_{./ancestor::addData/data/pou[./interface/addData/data/Inheritance/Extends='PLC2Skill.Skill']/interface/outputVars/variable[./type/derived/@name='PLC2Skill.SkillParameter']/@name}";
 		rr:class OPCUA:UAVariable
 	]];
 
@@ -1769,7 +1790,7 @@
   	rr:predicateObjectMap [
 		rr:predicate OPCUA:containsNode, OPCUA:organizes;
 		rr:objectMap [
-		rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_CurrentStateOutput";
+		rr:template "#{@name}_CurrentStateOutput";
 		rr:class OPCUA:UAVariable
 	]];
 	
@@ -1777,6 +1798,6 @@
   	rr:predicateObjectMap [
 		rr:predicate OPCUA:containsNode, OPCUA:organizes;
 		rr:objectMap [
-		rr:template "http://www.hsu-hh.de/aut/PLC2Skill#{@name}_SkillCommand";
+		rr:template "#{@name}_SkillCommand";
 		rr:class OPCUA:UAVariable
 	]].
