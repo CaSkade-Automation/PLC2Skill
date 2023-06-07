@@ -18,6 +18,9 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
+import org.eclipse.milo.opcua.stack.core.types.enumerated.MessageSecurityMode;
+import org.eclipse.milo.opcua.stack.core.types.enumerated.UserTokenType;
+import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,7 +46,7 @@ public class Plc2SkillMapper {
 
 	private QuadStore rmlMappingResult;
 	static String stateMachineTemplateFile = "PLCStateMachine.ttl";
-	static String pattern = "__SkillNamePlaceholder__";
+
 
 	private Path plcOpenFilePath;
 	private String endpointUrl;
@@ -176,15 +179,12 @@ public class Plc2SkillMapper {
 		String result = "";
 		try {
 			OpcUaBrowser browser = new OpcUaBrowser(this.endpointUrl, this.user, this.password);
-
-			// 1. Fix security info
-			// Currently, only securityPolicy and messageSecurityMode None are supported
-			// this.fixSecurityInfo(browser);
 			
-			// 2. Add user and password info
-			this.addUserInfo();
-			
+			// Connect to PLC and fix node IDs
 			result = fixNodeIds(browser);
+			
+			EndpointDescription endpointDescription = browser.getEndpointUsed();
+			result += addEndpointInformation(endpointDescription);
 		} catch (Exception e) {
 			logger.error("Error while making a connection to the OPC UA server. Please check your endpointUrl and make sure the server is running.");
 			logger.error("No nodeIdRoot was provided and a connection to the OPC UA could not be made. The mapping result will contain incomplete nodeIds with unreplaced template strings.");
@@ -194,39 +194,69 @@ public class Plc2SkillMapper {
 		return result;
 	}
 	
-	private void addUserInfo() {
-		if(this.user.isBlank()) return;
+	
+	private String addEndpointInformation(EndpointDescription endpointDescription) {	
+		// Note: Currently, only one endpoint is supported - its the one that is used for connecting
+		String endpointStringTemplate = "<${serverName}> OpcUa:hasEndpointDescription <${serverName}_Endpoint>.\r\n"
+				+ "	<${serverName}_Endpoint> a OpcUa:EndpointDescription;\r\n"
+				+ "		OpcUa:hasEndpointUrl \"${EndpointUrl}\";\r\n"
+				+ "		OpcUa:hasMessageSecurityMode OpcUa:MessageSecurityMode_${MessageSecurityMode}; \r\n"
+				+ "		OpcUa:hasSecurityPolicy OpcUa:${SecurityPolicy}.\r\n";
+		
+		String tokenSnippetTemplate = "<${serverName}_Endpoint> OpcUa:hasUserIdentityToken <${serverName}_Endpoint_UserIdentityToken>.\r\n"
+				+ "		<${serverName}_Endpoint_UserIdentityToken> a ${TokenType}.\r\n";
+		
+		String opcUaUserTokenSnippetTemplate = "<${serverName}_Endpoint_UserIdentityToken> OpcUa:requiresUserName \"${UserName}\";\r\n"
+				+ "		OpcUa:requiresPassword \"${Password}\" .";
 		
 		// Get the UA server
 		Term typePredicate = new NamedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-		Term serverTypeNode = new NamedNode("http://www.hsu-ifa.de/ontologies/OpcUa#UAServer");
+		Term serverTypeNode = new NamedNode("http://www.w3id.org/hsu-aut/OpcUa#UAServer");
 		Quad serverQuad = this.rmlMappingResult.getQuads(null, typePredicate, serverTypeNode).get(0);	// Assumption that there is only one server per PLCopen file
+		String serverName = serverQuad.getSubject().getValue();
 		
-		Term userNameProperty = new NamedNode("http://www.hsu-ifa.de/ontologies/OpcUa#requiresUserName");
-		Literal userNameLiteral = new Literal(this.user);
-		this.rmlMappingResult.addQuad(serverQuad.getSubject(), userNameProperty, userNameLiteral);
+		// Get all other info
+		String endpointUrl = endpointDescription.getEndpointUrl();
+		String msgSecMode = endpointDescription.getSecurityMode().name();
+		String secPolicyUri = endpointDescription.getSecurityPolicyUri();
+		String[] secPolicyPieces = secPolicyUri.split("/");
+		String secPolicy = secPolicyPieces[secPolicyPieces.length - 1].replace("#", "_");
+		String tokenType = this.convertTokenType(endpointDescription.getUserIdentityTokens()[0].getTokenType());
 		
-		Term passwordProperty = new NamedNode("http://www.hsu-ifa.de/ontologies/OpcUa#requiresPassword");
-		Literal passwordLiteral = new Literal(this.password);
-		this.rmlMappingResult.addQuad(serverQuad.getSubject(), passwordProperty, passwordLiteral);
+		String endpointString = endpointStringTemplate
+				.replace("${serverName}", serverName)
+				.replace("${EndpointUrl}", endpointUrl)
+				.replace("${MessageSecurityMode}", msgSecMode)
+				.replace("${SecurityPolicy}", secPolicy);
+	
+		String tokenSnippet = tokenSnippetTemplate
+				.replace("${serverName}", serverName)
+				.replace("${TokenType}", tokenType);
+				
+		String opcUaUserTokenSnippet = opcUaUserTokenSnippetTemplate
+				.replace("${serverName}", serverName)
+				.replace("${UserName}", this.user)
+				.replace("${Password}", this.password);
+		
+		String completeEndpointString = endpointString +"\n" + tokenSnippet + "\n" + opcUaUserTokenSnippet;
+		return completeEndpointString;
+	}
+	
+	private String convertTokenType(UserTokenType tokenType) {
+		switch (tokenType) {
+		case Anonymous:
+			return "OpcUa:AnonymousIdentityToken";
+		case Certificate:
+			return "OpcUa:X509IdentityToken";
+		case IssuedToken:
+			return "OpcUa:IssuedIdentityToken";
+		case UserName:
+			return "OpcUa:UserNameIdentityToken";
+		default: return "OpcUa:X509IdentityToken";
+		}
+		
 	}
 
-	private void fixSecurityInfo(OpcUaBrowser browser) {
-		// Replace the default info with the actual security information
-		String messageSecurityMode = browser.getSecurityMode().toString();
-		String securityPolicy = browser.getSecurityPolicy().getUri();
-		
-		Term msgSecModePredicate = new NamedNode("http://www.hsu-ifa.de/ontologies/OpcUa#hasMessageSecurityMode");
-		Term secPolicyPredicate = new NamedNode("http://www.hsu-ifa.de/ontologies/OpcUa#hasSecurityPolicy");
-		
-		Quad msgSecModeDefaultQuad = this.rmlMappingResult.getQuads(null, msgSecModePredicate, null).get(0);
-		this.rmlMappingResult.addQuad(msgSecModeDefaultQuad.getSubject(), msgSecModePredicate, new NamedNode(messageSecurityMode));
-		this.rmlMappingResult.removeQuads(msgSecModeDefaultQuad);
-		
-		Quad secPolicyDefaultQuad = this.rmlMappingResult.getQuads(null, secPolicyPredicate, null).get(0);
-		this.rmlMappingResult.addQuad(secPolicyDefaultQuad.getSubject(), secPolicyPredicate, new NamedNode(securityPolicy));
-		this.rmlMappingResult.removeQuads(secPolicyDefaultQuad);
-	}
 
 	/**
 	 * Replaces the ServerIP and PLCIdentifier
@@ -241,7 +271,7 @@ public class Plc2SkillMapper {
 
 		} else {
 			// Try to browse all variables to resolve the proper nodeID
-			Term predicate = new NamedNode("http://www.hsu-ifa.de/ontologies/OpcUa#nodeId");
+			Term predicate = new NamedNode("http://www.w3id.org/hsu-aut/OpcUa#nodeId");
 
 			List<Quad> sourceQuads = rmlMappingResult.getQuads(null, predicate, null);
 			for (Quad quad : sourceQuads) {
@@ -312,13 +342,17 @@ public class Plc2SkillMapper {
 		BufferedReader br = new BufferedReader(new InputStreamReader(stateMachineTemplateStream));
 		String stateMachineTemplate = br.lines().collect(Collectors.joining("\n"));
 
-		// For every procedureNode: Create a customized state machine by replacing the placeholder and add it to the total stateMachin string
-		String mappedStateMachines = "";
+		// For every procedureNode: Create a customized state machine by replacing the placeholder and add it to the total stateMachine string
+		String mappedStateMachines = "\n\n";
+		String skillVariable = "${skillName}";
 		for (int i = 0; i < skillNodes.getLength(); i++) {
 			String skillName = skillNodes.item(i).getAttributes().getNamedItem("name").getNodeValue();
-			String stateMachine = stateMachineTemplate.replaceAll(pattern, skillName);
+			String stateMachine = stateMachineTemplate.replace(skillVariable, skillName);
 			mappedStateMachines += stateMachine;
 		}
+		
+		// In the end, replace the baseIri for the complete document
+		mappedStateMachines = mappedStateMachines.replace("${base}", this.baseIri);
 
 		try {
 			br.close();

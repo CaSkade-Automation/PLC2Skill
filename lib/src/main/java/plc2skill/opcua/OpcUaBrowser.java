@@ -23,6 +23,7 @@ import org.eclipse.milo.opcua.stack.core.types.enumerated.MessageSecurityMode;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.NodeClass;
 import org.eclipse.milo.opcua.stack.core.types.structured.BrowseDescription;
 import org.eclipse.milo.opcua.stack.core.types.structured.BrowseResult;
+import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 import org.eclipse.milo.opcua.stack.core.types.structured.ReferenceDescription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +53,10 @@ public class OpcUaBrowser {
 	
 	public SecurityPolicy getSecurityPolicy() {
 		return this.creator.getSecurityPolicy();
+	}
+	
+	public EndpointDescription getEndpointUsed() {
+		return this.creator.getSelectedEndpoint();
 	}
 	
 	

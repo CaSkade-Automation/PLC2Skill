@@ -5,7 +5,7 @@
 @prefix CSS: <http://www.w3id.org/hsu-aut/css#> .
 @prefix CaSk: <http://www.w3id.org/hsu-aut/cask#> .
 @prefix CaSkMan: <http://www.w3id.org/hsu-aut/caskman#> .
-@prefix OPCUA: <http://www.hsu-ifa.de/ontologies/OpcUa#>.
+@prefix OPCUA: <http://www.w3id.org/hsu-aut/OpcUa#>.
 @prefix ISA88: <http://www.hsu-ifa.de/ontologies/ISA-TR88#>.
 @prefix DINEN61360: <http://www.hsu-ifa.de/ontologies/DINEN61360#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
@@ -1714,41 +1714,22 @@
 	rml:logicalSource [
 		rml:source "${XMLFileToMap}";
 		rml:referenceFormulation ql:XPath;
-		rml:iterator "./project/instances/configurations/configuration"];
+		rml:iterator "./project/instances/configurations/configuration"
+	];
 
 	rr:subjectMap [
 		rr:template "#{@name}_OPCUAServer";
 		rr:class OPCUA:UAServer
 	];	
   
-
   	rr:predicateObjectMap [
 		rr:predicate OPCUA:hasNodeSet;
 		rr:objectMap [
-		rr:template "#{@name}_OPCUANodeSet";
-		rr:class OPCUA:UANodeSet
-	]];
+			rr:template "#{@name}_OPCUANodeSet";
+			rr:class OPCUA:UANodeSet
+		]
+	].
 	
-	rr:predicateObjectMap [
-		rr:predicate OPCUA:hasEndpointUrl;
-		rr:objectMap [   
-		rr:template "__ServerEndpointUrl__";
-		rr:datatype xsd:string
-	]];	
-	
-	rr:predicateObjectMap [
-		rr:predicate OPCUA:hasSecurityPolicy;
-		rr:objectMap [
-		rr:template "http://www.hsu-ifa.de/ontologies/OpcUa#SecurityPolicy_None";
-		rr:class OPCUA:SecurityPolicy
-	]];
-	
-	rr:predicateObjectMap [
-		rr:predicate OPCUA:hasMessageSecurityMode;
-		rr:objectMap [
-		rr:template "http://www.hsu-ifa.de/ontologies/OpcUa#MessageSecurityMode_None";
-		rr:class OPCUA:MessageSecurityMode
-	]].
 
 #Definition of Nodes of the Nodeset
 :OPCUANodeSet a rr:TriplesMap;
