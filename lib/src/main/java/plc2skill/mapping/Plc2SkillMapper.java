@@ -87,7 +87,7 @@ public class Plc2SkillMapper {
 		/**
 		 * Set a custom module IRI for all the skills to be created
 		 * 
-		 * @param moduleIri The custom moduleIri that will be used. If none is set, one is determined automatically from the PLC application's name
+		 * @param resourceIri The custom resourceIri that will be used. If none is set, one is determined automatically from the PLC application's name
 		 * @return
 		 */
 		public Builder setResourceIri(String resourceIri) {
@@ -155,7 +155,7 @@ public class Plc2SkillMapper {
 
 		String resourceIri = this.resourceIri;
 		if (this.resourceIri == "") {
-			// If no moduleIri is given, create one from device name
+			// If no resourceIri is given, create one from device name
 			String applicationNameRegex = "./project/instances/configurations/configuration/@name";
 			Node applicationNode = this.findInPlcOpenFile(applicationNameRegex).item(0); // Assumption: There is only one device
 			String resourceName = applicationNode.getNodeValue();

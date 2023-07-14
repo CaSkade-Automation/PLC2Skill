@@ -31,8 +31,8 @@ public class Plc2SkillCli implements Runnable {
 	@Option(names = { "-pw", "--password" }, description = "Password of the OPC UA Server")
 	String password = "";
 
-	@Option(names = { "-mI", "--resourceIri" }, description = "Explicit resourceIri definition. Optional, but will be guessed rather poorly if none is given.")
-	String moduleIri = "";
+	@Option(names = { "-rI", "--resourceIri" }, description = "Explicit resourceIri definition. Optional, but will be guessed rather poorly if none is given.")
+	String resourceIri = "";
 	
 	@Option(names = { "-bI", "--baseIri" }, description = "Explicit baseIri definition for all individuals that are created. Optional, a default one is used if none is given")
 	String baseIri = "";
@@ -51,7 +51,7 @@ public class Plc2SkillCli implements Runnable {
 		logger.info("Started PLC-Code Mapping to Skills");
 		Path plcOpenPath = Path.of(fileName);
 		logger.info("fileName: " + plcOpenPath + "\nendpointUrl: " + endpointUrl + "\nnodeIdRoot: " + nodeIdRoot);
-		Plc2SkillMapper mapper = new Plc2SkillMapper.Builder(plcOpenPath, endpointUrl).setUser(user, password).setNodeIdRoot(nodeIdRoot).setResourceIri(moduleIri).setBaseIri(baseIri).build();
+		Plc2SkillMapper mapper = new Plc2SkillMapper.Builder(plcOpenPath, endpointUrl).setUser(user, password).setNodeIdRoot(nodeIdRoot).setResourceIri(resourceIri).setBaseIri(baseIri).build();
 		String result = mapper.executeMapping();
 		writeFile(result, outputFilename);
 
