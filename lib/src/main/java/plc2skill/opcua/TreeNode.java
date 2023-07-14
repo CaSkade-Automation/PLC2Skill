@@ -54,6 +54,19 @@ public class TreeNode<T> implements Iterable<TreeNode<T>> {
 		return this.parent;
 	}
 	
+	/**
+	 * Returns an ancestor of a given depth
+	 * @param level Level of ancestry. 0: element, 1: parent, 2: grandparent etc.
+	 * @return
+	 */
+	public TreeNode<T> getAncestor(int level) {
+		TreeNode<T> ancestor = this;
+		for (int i = 1; i <= level; i++) {
+			ancestor = ancestor.parent;
+		}
+		return ancestor;
+	}
+	
 	public boolean isLeaf() {
 		return (this.children.size() == 0);
 	}

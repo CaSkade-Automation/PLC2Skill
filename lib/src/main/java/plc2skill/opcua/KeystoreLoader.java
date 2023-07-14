@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 /**
  * KeystoreLoader implementation taken from Eclipse Milo (https://github.com/eclipse/milo/blob/master/milo-examples/client-examples/src/main/java/org/eclipse/milo/examples/client/KeyStoreLoader.java)
  */
-class KeyStoreLoader {
+public class KeystoreLoader {
 
     private static final Pattern IP_ADDR_PATTERN = Pattern.compile(
         "^(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
@@ -35,10 +35,10 @@ class KeyStoreLoader {
     private X509Certificate clientCertificate;
     private KeyPair clientKeyPair;
 
-    KeyStoreLoader load(Path baseDir) throws Exception {
+    KeystoreLoader load(Path baseDir) throws Exception {
         KeyStore keyStore = KeyStore.getInstance("PKCS12");
 
-        Path serverKeyStore = baseDir.resolve("example-client.pfx");
+        Path serverKeyStore = baseDir.resolve("plc2skill-client.pfx");
 
         logger.info("Loading KeyStore at {}", serverKeyStore);
 
