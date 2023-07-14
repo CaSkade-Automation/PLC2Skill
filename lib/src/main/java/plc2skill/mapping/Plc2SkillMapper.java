@@ -77,7 +77,7 @@ public class Plc2SkillMapper {
 
 		public Builder setBaseIri(String baseIri) {
 			// make sure null doesn't overwrite the default value
-			if (baseIri == null)
+			if (baseIri == null || baseIri == "")
 				return this;
 
 			mapper.baseIri = baseIri;
