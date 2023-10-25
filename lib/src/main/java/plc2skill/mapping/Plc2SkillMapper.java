@@ -53,7 +53,7 @@ public class Plc2SkillMapper {
 	private String user;
 	private String password;
 	private String resourceIri = "";
-	private String nodeIdRoot;
+	private String nodeIdRoot = "";
 	private String baseIri = "http://www.hsu-hh.de/aut/ontologies/PLC2Skill";
 
 	private Plc2SkillMapper(Path plcOpenFilePath, String endpointUrl) {
