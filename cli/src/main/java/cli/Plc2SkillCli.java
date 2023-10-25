@@ -54,7 +54,7 @@ public class Plc2SkillCli implements Runnable {
 		Plc2SkillMapper mapper = new Plc2SkillMapper.Builder(plcOpenPath, endpointUrl).setUser(user, password).setNodeIdRoot(nodeIdRoot).setResourceIri(resourceIri).setBaseIri(baseIri).build();
 		String result = mapper.executeMapping();
 		writeFile(result, outputFilename);
-
+		logger.info("Completed PLC-Code Mapping to Skills");
 	}
 
 	public static void main(String[] args) {
